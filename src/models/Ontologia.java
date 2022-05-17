@@ -1,97 +1,97 @@
 package models;
 
 public class Ontologia {
-	private int id;
-	private String ruta;
-	private String categoria;
-	private String subcategoria;
-	private String titulo;
-	private String descripcion;
-	private String usuario;
-	private String simbolo;
-	private String ns;
-	
-	public Ontologia() {
-		setId(0);
-		setRuta("");
-		setCategoria("");
-		setTitulo("");
-		setDescripcion("");
-		setUsuario("");
-		setSimbolo("");
-		setNs("");
-	}
 
-	public int getId() {
-		return id;
-	}
+  private int id;
+  private String ruta;
+  private String categoria;
+  private String subcategoria;
+  private String titulo;
+  private String descripcion;
+  private String usuario;
+  private String simbolo;
+  private String ns;
 
-	public void setId(int id) {
-		this.id = id;
-	}
+  public Ontologia() {
+    setId(0);
+    setRuta("");
+    setCategoria("");
+    setTitulo("");
+    setDescripcion("");
+    setUsuario("");
+    setSimbolo("");
+    setNs("");
+  }
 
-	public String getRuta() {
-		return ruta;
-	}
+  public int getId() {
+    return id;
+  }
 
-	public void setRuta(String ruta) {
-		this.ruta = ruta;
-	}
+  public void setId(int id) {
+    this.id = id;
+  }
 
-	public String getCategoria() {
-		return categoria;
-	}
+  public String getRuta() {
+    return ruta;
+  }
 
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
+  public void setRuta(String ruta) {
+    this.ruta = ruta;
+  }
 
-	public String getTitulo() {
-		return titulo;
-	}
+  public String getCategoria() {
+    return categoria;
+  }
 
-	public void setTitulo(String titulo) {
-		this.titulo = titulo;
-	}
+  public void setCategoria(String categoria) {
+    this.categoria = categoria;
+  }
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+  public String getTitulo() {
+    return titulo;
+  }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+  public void setTitulo(String titulo) {
+    this.titulo = titulo;
+  }
 
-	public String getUsuario() {
-		return usuario;
-	}
+  public String getDescripcion() {
+    return descripcion;
+  }
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
+  public void setDescripcion(String descripcion) {
+    this.descripcion = descripcion;
+  }
 
-	public String getSubcategoria() {
-		return subcategoria;
-	}
+  public String getUsuario() {
+    return usuario;
+  }
 
-	public void setSubcategoria(String subcategoria) {
-		this.subcategoria = subcategoria;
-	}
+  public void setUsuario(String usuario) {
+    this.usuario = usuario;
+  }
 
-	public String getSimbolo() {
-		return simbolo;
-	}
+  public String getSubcategoria() {
+    return subcategoria;
+  }
 
-	public void setSimbolo(String simbolo) {
-		this.simbolo = simbolo;
-	}
+  public void setSubcategoria(String subcategoria) {
+    this.subcategoria = subcategoria;
+  }
 
-	public String getNs() {
-		return ns;
-	}
+  public String getSimbolo() {
+    return simbolo;
+  }
 
-	public void setNs(String ns) {
-		this.ns = ns;
-	}
-	
+  public void setSimbolo(String simbolo) {
+    this.simbolo = simbolo;
+  }
+
+  public String getNs() {
+    return ns;
+  }
+
+  public void setNs(String ns) {
+    this.ns = ns;
+  }
 }

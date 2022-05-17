@@ -35,140 +35,140 @@
 <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 </head>
 <body>
-	<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-		<img src="img/uasLogo.png" class="logo" alt="Logo" style="height: 50px; width: 50px;">
-		<a class="navbar-brand" href="./index.jsp">Ontologías</a>
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
-			<ul class="navbar-nav mr-auto">
-			</ul>
-			<form class="form-inline my-2 my-lg-0">
-				<%
-					if (request.getSession().getAttribute("UsuarioTipo").toString().equals("1")) {
-				%>
-				<a class="navbar-brand" href="categorias/categorias.jsp">Categorías</a>
-				<a class="navbar-brand" href="categorias/ramas.jsp">Subcategorías</a>
-				<a class="navbar-brand" href="ontologias/todas.jsp">Ontologías</a>
-				<a class="navbar-brand" href="usuarios/usuarios.jsp">
-					<i class="fas fa-users"></i>
-				</a>
-				<%
-					}
-				%>
-				<a class="navbar-brand" href="ontologias/propias.jsp">Mis Ontologías</a>
-				<a class="navbar-brand" href="noti.jsp">
-					<i class="fas fa-bell"></i>
-				</a>
-				<ul class="navbar-nav mr-auto">
-					<li class="nav-item dropdown">
-						<a style="color: white;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							<%
-								Conexion cn2 = new Conexion();
-									Connection conn2 = cn2.GetConexion();
-									Statement state4 = conn2.createStatement();
-									Usuarios conexion2 = new Usuarios();
-									ArrayList<Usuario> usuarios2 = conexion2
-											.buscarXId(request.getSession().getAttribute("UsuarioId").toString());
-									for (Usuario usuario : usuarios2) {
-							%>
-							<%
-								if (usuario.getFoto() != null) {
-							%>
-							<img src="data: image/png;base64,<%out.print(usuario.getFoto());%>" style="width: 2rem; height: 2rem; object-fit: cover;">
-							<%
-								} else {
-							%>
-							<img src="img/face2.png" style="width: 2rem; height: 2rem; object-fit: cover;">
-							<%
-								}
-							%>
-							<%
-								}
-							%>
-						</a>
-						<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item" href="perfil.jsp">Ver Perfil</a>
-							<a class="dropdown-item" href="cambiar.jsp">Cambiar Contraseña</a>
-							<a class="dropdown-item" href="./salir.jsp">Cerrar sesión</a>
-						</div>
-					</li>
-				</ul>
-			</form>
-		</div>
-	</nav>
-	<br>
-	<div class="container">
-		<h4>Detalles del perfil</h4>
-		<%
-			Usuarios conexion = new Usuarios();
-				ArrayList<Usuario> usuarios = conexion
-						.buscarXId(request.getSession().getAttribute("UsuarioId").toString());
-				for (Usuario usuario : usuarios) {
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <img src="img/uasLogo.png" class="logo" alt="Logo" style="height: 50px; width: 50px;">
+    <a class="navbar-brand" href="./index.jsp">Ontologías</a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+      </ul>
+      <form class="form-inline my-2 my-lg-0">
+        <%
+        	if (request.getSession().getAttribute("UsuarioTipo").toString().equals("1")) {
+        %>
+        <a class="navbar-brand" href="categorias/categorias.jsp">Categorías</a>
+        <a class="navbar-brand" href="categorias/ramas.jsp">Subcategorías</a>
+        <a class="navbar-brand" href="ontologias/todas.jsp">Ontologías</a>
+        <a class="navbar-brand" href="usuarios/usuarios.jsp">
+          <i class="fas fa-users"></i>
+        </a>
+        <%
+        	}
+        %>
+        <a class="navbar-brand" href="ontologias/propias.jsp">Mis Ontologías</a>
+        <a class="navbar-brand" href="noti.jsp">
+          <i class="fas fa-bell"></i>
+        </a>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item dropdown">
+            <a style="color: white;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%
+              	Conexion cn2 = new Conexion();
+              		Connection conn2 = cn2.GetConexion();
+              		Statement state4 = conn2.createStatement();
+              		Usuarios conexion2 = new Usuarios();
+              		ArrayList<Usuario> usuarios2 = conexion2
+              				.buscarXId(request.getSession().getAttribute("UsuarioId").toString());
+              		for (Usuario usuario : usuarios2) {
+              %>
+              <%
+              	if (usuario.getFoto() != null) {
+              %>
+              <img src="data: image/png;base64,<%out.print(usuario.getFoto());%>" style="width: 2rem; height: 2rem; object-fit: cover;">
+              <%
+              	} else {
+              %>
+              <img src="img/face2.png" style="width: 2rem; height: 2rem; object-fit: cover;">
+              <%
+              	}
+              %>
+              <%
+              	}
+              %>
+            </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="perfil.jsp">Ver Perfil</a>
+              <a class="dropdown-item" href="cambiar.jsp">Cambiar Contraseña</a>
+              <a class="dropdown-item" href="./salir.jsp">Cerrar sesión</a>
+            </div>
+          </li>
+        </ul>
+      </form>
+    </div>
+  </nav>
+  <br>
+  <div class="container">
+    <h4>Detalles del perfil</h4>
+    <%
+    	Usuarios conexion = new Usuarios();
+    		ArrayList<Usuario> usuarios = conexion
+    				.buscarXId(request.getSession().getAttribute("UsuarioId").toString());
+    		for (Usuario usuario : usuarios) {
 
-					if (request.getParameter("button") != null) {
-						if (request.getAttribute("respuesta") == "success") {
-							password = "";
-							newpassword = "";
-							newpassword2 = "";
-						}
-					}
-		%>
-		<div class="card" style="box-shadow: -4px 5px rgb(237, 234, 245, 0.5);">
-			<div class="card-body ">
-				<form action="cambiar.jsp" method="post">
-					<div class="row">
-						<div class="col-5">
-							<div class="form-group">
-								<label for="">Usuario</label>
-								<input type="text" class="form-control" placeholder="Nombre(s)" name="nombres" value="<%out.print(usuario.getNombres() + " " + usuario.getApp() + " " + usuario.getApm());%>" readonly>
-							</div>
-							<div class="form-group">
-								<label for="">Contraseña Actual</label>
-								<input type="password" class="form-control" name="contra" value="<%if (password != null) {
+    			if (request.getParameter("button") != null) {
+    				if (request.getAttribute("respuesta") == "success") {
+    					password = "";
+    					newpassword = "";
+    					newpassword2 = "";
+    				}
+    			}
+    %>
+    <div class="card" style="box-shadow: -4px 5px rgb(237, 234, 245, 0.5);">
+      <div class="card-body ">
+        <form action="cambiar.jsp" method="post">
+          <div class="row">
+            <div class="col-5">
+              <div class="form-group">
+                <label for="">Usuario</label>
+                <input type="text" class="form-control" placeholder="Nombre(s)" name="nombres" value="<%out.print(usuario.getNombres() + " " + usuario.getApp() + " " + usuario.getApm());%>" readonly>
+              </div>
+              <div class="form-group">
+                <label for="">Contraseña Actual</label>
+                <input type="password" class="form-control" name="contra" value="<%if (password != null) {
 						out.print(password);
 					}%>">
-							</div>
-							<div class="form-group">
-								<label for="">Contraseña Nueva</label>
-								<input type="password" class="form-control" name="contra_nueva" value="<%if (newpassword != null) {
+              </div>
+              <div class="form-group">
+                <label for="">Contraseña Nueva</label>
+                <input type="password" class="form-control" name="contra_nueva" value="<%if (newpassword != null) {
 						out.print(newpassword);
 					}%>">
-							</div>
-							<div class="form-group">
-								<label for="">Repetir Contraseña Nueva</label>
-								<input type="password" class="form-control" name="contra_nueva2" value="<%if (newpassword2 != null) {
+              </div>
+              <div class="form-group">
+                <label for="">Repetir Contraseña Nueva</label>
+                <input type="password" class="form-control" name="contra_nueva2" value="<%if (newpassword2 != null) {
 						out.print(newpassword2);
 					}%>">
-							</div>
-							<button type="submit" class="btn btn-primary" name="button">
-								<i class="fas fa-save"></i>
-								Guardar
-							</button>
-						</div>
-					</div>
-				</form>
-			</div>
-		</div>
-		<%
-			}
-		%>
-	</div>
-	<%
-		if (request.getParameter("button") != null) {
-				if (request.getAttribute("respuesta") == "difpass") {
-					out.print("<script>toastr.error('Las contraseñas no son iguales'); </script> ");
-				} else if (request.getAttribute("respuesta") == "error") {
-					out.print("<script>toastr.error('Error al hacer el cambio de contraseña'); </script> ");
-				} else if (request.getAttribute("respuesta") == "wrongpass") {
-					out.print("<script>toastr.error('La contraseña actual es incorrecta'); </script> ");
-				} else if (request.getAttribute("respuesta") == "nosuccess") {
-					out.print("<script>toastr.error('No se ha podido cambiar la contraseña'); </script> ");
-				} else if (request.getAttribute("respuesta") == "success") {
-					out.print("<script>toastr.success('Se ha cambiado la contraseña exitosamente'); </script> ");
-				} else if (request.getAttribute("respuesta") == "error_notdata") {
-					out.print("<script>toastr.error('Llene todos los campos'); </script> ");
-				}
-			}
-	%>
+              </div>
+              <button type="submit" class="btn btn-primary" name="button">
+                <i class="fas fa-save"></i>
+                Guardar
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <%
+    	}
+    %>
+  </div>
+  <%
+  	if (request.getParameter("button") != null) {
+  			if (request.getAttribute("respuesta") == "difpass") {
+  				out.print("<script>toastr.error('Las contraseñas no son iguales'); </script> ");
+  			} else if (request.getAttribute("respuesta") == "error") {
+  				out.print("<script>toastr.error('Error al hacer el cambio de contraseña'); </script> ");
+  			} else if (request.getAttribute("respuesta") == "wrongpass") {
+  				out.print("<script>toastr.error('La contraseña actual es incorrecta'); </script> ");
+  			} else if (request.getAttribute("respuesta") == "nosuccess") {
+  				out.print("<script>toastr.error('No se ha podido cambiar la contraseña'); </script> ");
+  			} else if (request.getAttribute("respuesta") == "success") {
+  				out.print("<script>toastr.success('Se ha cambiado la contraseña exitosamente'); </script> ");
+  			} else if (request.getAttribute("respuesta") == "error_notdata") {
+  				out.print("<script>toastr.error('Llene todos los campos'); </script> ");
+  			}
+  		}
+  %>
 </body>
 </html>
 <%

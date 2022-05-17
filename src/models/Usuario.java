@@ -3,112 +3,108 @@ package models;
 import java.io.InputStream;
 
 public class Usuario {
-	private int id;
-	private String nombres;
-	private String app;
-	private String apm;
-	private String correo;
-	private String usuario;
-	private String contra;
-	private int tipo;
-	private int categoria;
-	private String foto;
-	
-	public Usuario() {
-		setId(0);
-		setNombres("");
-		setApp("");
-		setApm("");
-		setCorreo("");
-		setUsuario("");
-		setContra("");
-		setTipo(0);
-		setCategoria(0);
-		setFoto("");
-	}
-	
-	public int getId() {
-		return id;
-	}
 
-	public void setId(int id) {
-		this.id = id;
-	}
+  private int id;
+  private String nombres;
+  private String app;
+  private String apm;
+  private String correo;
+  private String usuario;
+  private String contra;
+  private int tipo;
+  private int categoria;
+  private String foto;
 
-	public String getNombres() {
-		return nombres;
-	}
+  public Usuario() {
+    setId(0);
+    setNombres("");
+    setApp("");
+    setApm("");
+    setCorreo("");
+    setUsuario("");
+    setContra("");
+    setTipo(0);
+    setCategoria(0);
+    setFoto("");
+  }
 
-	public void setNombres(String nombres) {
-		this.nombres = nombres;
-	}
+  public int getId() {
+    return id;
+  }
 
-	public String getApp() {
-		return app;
-	}
+  public void setId(int id) {
+    this.id = id;
+  }
 
-	public void setApp(String app) {
-		this.app = app;
-	}
+  public String getNombres() {
+    return nombres;
+  }
 
-	public String getApm() {
-		return apm;
-	}
+  public void setNombres(String nombres) {
+    this.nombres = nombres;
+  }
 
-	public void setApm(String apm) {
-		this.apm = apm;
-	}
+  public String getApp() {
+    return app;
+  }
 
-	public String getCorreo() {
-		return correo;
-	}
+  public void setApp(String app) {
+    this.app = app;
+  }
 
-	public void setCorreo(String correo) {
-		this.correo = correo;
-	}
+  public String getApm() {
+    return apm;
+  }
 
-	public String getUsuario() {
-		return usuario;
-	}
+  public void setApm(String apm) {
+    this.apm = apm;
+  }
 
-	public void setUsuario(String usuario) {
-		this.usuario = usuario;
-	}
+  public String getCorreo() {
+    return correo;
+  }
 
-	public String getContra() {
-		return contra;
-	}
+  public void setCorreo(String correo) {
+    this.correo = correo;
+  }
 
-	public void setContra(String contra) {
-		this.contra = contra;
-	}
+  public String getUsuario() {
+    return usuario;
+  }
 
-	public int getTipo() {
-		return tipo;
-	}
+  public void setUsuario(String usuario) {
+    this.usuario = usuario;
+  }
 
-	public void setTipo(int tipo) {
-		this.tipo = tipo;
-	}
+  public String getContra() {
+    return contra;
+  }
 
-	public String getFoto() {
-		return foto;
-	}
+  public void setContra(String contra) {
+    this.contra = contra;
+  }
 
-	public void setFoto(String foto) {
-		this.foto = foto;
-	}
+  public int getTipo() {
+    return tipo;
+  }
 
-	public int getCategoria() {
-		return categoria;
-	}
+  public void setTipo(int tipo) {
+    this.tipo = tipo;
+  }
 
-	public void setCategoria(int categoria) {
-		this.categoria = categoria;
-	}
+  public String getFoto() {
+    return foto;
+  }
 
-	
-	
-	
+  public void setFoto(String foto) {
+    this.foto = foto;
+  }
 
+  public int getCategoria() {
+    return categoria;
+  }
+
+  public void setCategoria(int categoria) {
+    this.categoria = categoria;
+  }
 }
