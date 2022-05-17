@@ -1,0 +1,275 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#"
+     xml:base="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#has -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#has">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#equation"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#variable"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#part_of -->
+
+    <owl:ObjectProperty rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#part_of">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#equation"/>
+        <rdfs:range rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#problem"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#complexity -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#complexity">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#problem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#den_coeficient -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#den_coeficient">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#variable"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#documentPath -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#documentPath">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#problem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#id -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#id">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#problem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#num_coeficient -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#num_coeficient">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#variable"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#problemStatement -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#problemStatement">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#problem"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#result -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#result">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#equation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#solution -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#solution">
+        <rdfs:domain rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#variable"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#equation -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#equation"/>
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#equation1 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#equation1">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#equation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#equation2 -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#equation2">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#equation"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#problem -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#problem"/>
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#variable -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#variable"/>
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#x -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#x">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#variable"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#y -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#y">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#variable"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#ecuacion1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#ecuacion1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#equation1"/>
+        <has rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#x1"/>
+        <has rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#y1"/>
+        <part_of rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#problema1"/>
+        <result rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</result>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#ecuacion2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#ecuacion2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#equation2"/>
+        <has rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#x2"/>
+        <has rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#y2"/>
+        <part_of rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#problema1"/>
+        <result rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</result>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#problema1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#problema1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#problem"/>
+        <complexity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</complexity>
+        <documentPath rdf:datatype="http://www.w3.org/2001/XMLSchema#string">aqui va la ruta</documentPath>
+        <id rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</id>
+        <problemStatement rdf:datatype="http://www.w3.org/2001/XMLSchema#string">planteamiento del problema</problemStatement>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#x1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#x1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#x"/>
+        <den_coeficient rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</den_coeficient>
+        <num_coeficient rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</num_coeficient>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#x2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#x2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#x"/>
+        <den_coeficient rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</den_coeficient>
+        <num_coeficient rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</num_coeficient>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#y1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#y1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#y"/>
+        <den_coeficient rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</den_coeficient>
+        <num_coeficient rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</num_coeficient>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#y2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#y2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/8/ecuacionesv02#y"/>
+        <den_coeficient rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1</den_coeficient>
+        <num_coeficient rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">-3</num_coeficient>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi -->
+

@@ -1,0 +1,97 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:j.0="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Class rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#tipo_alimentacion"/>
+  <owl:Class rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#habitat"/>
+  <owl:Class rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#tipo_animal"/>
+  <owl:Class rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#animal"/>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#tiene">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#tipo_alimentacion"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#animal"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#es">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#tipo_animal"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#animal"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#nomAli">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#tipo_alimentacion"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#idAni">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#animal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#nomTipo">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#tipo_animal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#nombreAni">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#animal"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#nomHab">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#habitat"/>
+  </owl:DatatypeProperty>
+  <j.0:tipo_alimentacion rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#ali2">
+    <j.0:nomAli>hervivoro</j.0:nomAli>
+  </j.0:tipo_alimentacion>
+  <j.0:animal rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#animal2">
+    <j.0:idAni>2^^http://www.w3.org/2001/XMLSchema#int</j.0:idAni>
+    <j.0:nombreAni>ballena</j.0:nombreAni>
+    <j.0:es>
+      <j.0:tipo_animal rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#tipo2">
+        <j.0:nomTipo>oviparo</j.0:nomTipo>
+      </j.0:tipo_animal>
+    </j.0:es>
+    <j.0:tiene>
+      <j.0:tipo_alimentacion rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#ali3">
+        <j.0:nomAli>omnivoro</j.0:nomAli>
+      </j.0:tipo_alimentacion>
+    </j.0:tiene>
+  </j.0:animal>
+  <j.0:animal rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#animal1">
+    <j.0:idAni>1^^http://www.w3.org/2001/XMLSchema#int</j.0:idAni>
+    <j.0:nombreAni>leon</j.0:nombreAni>
+    <j.0:es>
+      <j.0:tipo_animal rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#tipo1">
+        <j.0:nomTipo>mamifero</j.0:nomTipo>
+      </j.0:tipo_animal>
+    </j.0:es>
+    <j.0:tiene>
+      <j.0:tipo_alimentacion rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#ali1">
+        <j.0:nomAli>carnivoro</j.0:nomAli>
+      </j.0:tipo_alimentacion>
+    </j.0:tiene>
+  </j.0:animal>
+  <j.0:animal rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#animal4">
+    <j.0:idAni>5^^http://www.w3.org/2001/XMLSchema#int</j.0:idAni>
+    <j.0:nombreAni>culebra</j.0:nombreAni>
+    <j.0:es rdf:resource="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#tipo1"/>
+    <j.0:tiene rdf:resource="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#ali1"/>
+  </j.0:animal>
+  <j.0:animal rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#animal3">
+    <j.0:idAni>3^^http://www.w3.org/2001/XMLSchema#int</j.0:idAni>
+    <j.0:nombreAni>aguila</j.0:nombreAni>
+    <j.0:es rdf:resource="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#tipo2"/>
+    <j.0:tiene rdf:resource="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#ali1"/>
+  </j.0:animal>
+  <j.0:animal rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#animal5">
+    <j.0:idAni>5^^http://www.w3.org/2001/XMLSchema#int</j.0:idAni>
+    <j.0:nombreAni>gato</j.0:nombreAni>
+    <j.0:es rdf:resource="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#tipo1"/>
+    <j.0:tiene rdf:resource="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#ali1"/>
+  </j.0:animal>
+  <j.0:habitat rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#hab2">
+    <j.0:nomHab>agua</j.0:nomHab>
+  </j.0:habitat>
+  <j.0:habitat rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#hab3">
+    <j.0:nomHab>aire</j.0:nomHab>
+  </j.0:habitat>
+  <j.0:habitat rdf:about="http://www.semanticweb.org/ferna/ontologies/2018/4/untitled-ontology-18#hab1">
+    <j.0:nomHab>tierra</j.0:nomHab>
+  </j.0:habitat>
+</rdf:RDF>

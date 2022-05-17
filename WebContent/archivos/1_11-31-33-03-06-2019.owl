@@ -1,0 +1,93 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:j.0="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Class rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#estudiante"/>
+  <owl:Class rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#materia"/>
+  <owl:Class rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#grupo"/>
+  <owl:Class rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#carrera"/>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#tiene">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#grupo"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#carrera"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#esParteDe">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#carrera"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#materia"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#pertenece">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#grupo"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#estudiante"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#cursa">
+    <rdfs:range rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#materia"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#estudiante"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#idEstudiante">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#estudiante"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#nomEstudiante">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#estudiante"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#nomMateria">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#materia"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#idGrupo">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#grupo"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#nomCarrera">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#carrera"/>
+  </owl:DatatypeProperty>
+  <j.0:estudiante rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#estudiante2">
+    <j.0:idEstudiante>2^^http://www.w3.org/2001/XMLSchema#integer</j.0:idEstudiante>
+    <j.0:nomEstudiante>Jonás</j.0:nomEstudiante>
+    <j.0:cursa>
+      <j.0:materia rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#materia1">
+        <j.0:nomMateria>Algoritmos</j.0:nomMateria>
+        <j.0:esParteDe>
+          <j.0:carrera rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#carrera1">
+            <j.0:nomCarrera>ingeniería de software</j.0:nomCarrera>
+            <j.0:tiene>
+              <j.0:grupo rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#grupo1">
+                <j.0:idGrupo>101^^http://www.w3.org/2001/XMLSchema#integer</j.0:idGrupo>
+              </j.0:grupo>
+            </j.0:tiene>
+          </j.0:carrera>
+        </j.0:esParteDe>
+      </j.0:materia>
+    </j.0:cursa>
+    <j.0:pertenece rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#grupo1"/>
+  </j.0:estudiante>
+  <j.0:estudiante rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#estudiante3">
+    <j.0:idEstudiante>3^^http://www.w3.org/2001/XMLSchema#integer</j.0:idEstudiante>
+    <j.0:nomEstudiante>Alberto</j.0:nomEstudiante>
+    <j.0:cursa>
+      <j.0:materia rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#materia2">
+        <j.0:nomMateria>algebra</j.0:nomMateria>
+        <j.0:esParteDe>
+          <j.0:carrera rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#carrera2">
+            <j.0:nomCarrera>ingeniería civil</j.0:nomCarrera>
+            <j.0:tiene>
+              <j.0:grupo rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#grupo2">
+                <j.0:idGrupo>102^^http://www.w3.org/2001/XMLSchema#integer</j.0:idGrupo>
+              </j.0:grupo>
+            </j.0:tiene>
+          </j.0:carrera>
+        </j.0:esParteDe>
+      </j.0:materia>
+    </j.0:cursa>
+    <j.0:pertenece rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#grupo2"/>
+  </j.0:estudiante>
+  <j.0:estudiante rdf:about="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#estudiante1">
+    <j.0:idEstudiante>1^^http://www.w3.org/2001/XMLSchema#integer</j.0:idEstudiante>
+    <j.0:nomEstudiante>Martha</j.0:nomEstudiante>
+    <j.0:cursa rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#materia1"/>
+    <j.0:pertenece rdf:resource="http://www.semanticweb.org/alumno/ontologies/2017/9/carrera#grupo1"/>
+  </j.0:estudiante>
+</rdf:RDF>

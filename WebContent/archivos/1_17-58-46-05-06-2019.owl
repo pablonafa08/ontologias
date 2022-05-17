@@ -1,0 +1,61 @@
+<rdf:RDF
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:j.0="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+  <owl:Class rdf:about="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#estudiante"/>
+  <owl:Class rdf:about="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#grupo"/>
+  <owl:Class rdf:about="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#carrera"/>
+  <owl:Class rdf:about="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#materia"/>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#cursa">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#estudiante"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#materia"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#esParteDe">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#materia"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#carrera"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#pertenece">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#estudiante"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#grupo"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#tiene">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#carrera"/>
+    <rdfs:range rdf:resource="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#grupo"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#nombreMateria">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#materia"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#estudianteNombre">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#estudiante"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#estudianteID">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#estudiante"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#IDMateria">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#materia"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#nombreCarrera">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#carrera"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#IDCarrera">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#carrera"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#IdentificadorGrupo">
+    <rdfs:domain rdf:resource="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#grupo"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  </owl:DatatypeProperty>
+  <j.0:grupo rdf:about="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#grupo1">
+    <j.0:IdentificadorGrupo>101</j.0:IdentificadorGrupo>
+  </j.0:grupo>
+  <j.0:grupo rdf:about="http://www.semanticweb.org/christiangael/ontologies/2018/1/carreras#grupo2">
+    <j.0:IdentificadorGrupo>102</j.0:IdentificadorGrupo>
+  </j.0:grupo>
+</rdf:RDF>
