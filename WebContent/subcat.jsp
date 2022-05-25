@@ -4,6 +4,9 @@
 	if (usuario2 == null) {
 		response.sendRedirect("/ontologias/login.jsp");
 	} else {
+		String id = request.getParameter("id").toString();
+		request.getSession().setAttribute("id_categoria", id);
+		request.getSession().setMaxInactiveInterval(60 * 30);
 %>
 <%@page import="controllers.SubCategorias"%>
 <%@page import="models.SubCategoria"%>
@@ -17,7 +20,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1" />
-<title>Subcategoría</title>
+<title>Subcategorï¿½a</title>
 <link href="css/bootstrap.min.css" rel="stylesheet" />
 <link href="js/bootstrap.min.js" rel="stylesheet" />
 <link href="./css/mycss.css" rel="stylesheet" />
@@ -102,7 +105,9 @@
       </div>
     </div>
     <br />
-    <div class="row" id="subcategorias">Los datos se muestran desde el archivo buscarSubCategoria.jsp</div>
+    <div class="row" id="subcategorias">
+      <!--  Los datos se muestran desde el archivo buscarSubCategoria.jsp -->
+    </div>
   </div>
 </body>
 </html>

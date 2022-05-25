@@ -6,7 +6,9 @@ function buscar_datos(consulta) {
     url: "./js/archivosBusquedas/buscarSubCategoria.jsp",
     type: "POST",
     dataType: "html",
-    data: { consulta: consulta },
+    data: {
+      consulta: consulta,
+    },
   })
     .done(function (respuesta) {
       $("#subcategorias").html(respuesta);

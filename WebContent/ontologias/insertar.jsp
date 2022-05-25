@@ -172,12 +172,12 @@
         </label>
         <select class="form-control" name="<%out.print(objeto);%>">
           <%
-          	String individuals[][] = clases.leerIndividual(ruta, objeto);
-          			for (String individual[] : individuals) {
+          	String individuals[] = clases.leerIndividual(ruta, objeto);
+          			for (String individual : individuals) {
           %>
-          <option value="<%out.print(individual[0]);%>">
+          <option value="<%out.print(individual);%>">
             <%
-            	out.print(individual[0] + " - " + individual[1]);
+            	out.print(individual);
             %>
           </option>
           <%

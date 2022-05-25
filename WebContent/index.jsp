@@ -107,7 +107,9 @@
       </div>
     </div>
     <br>
-    <div class="row" id="categorias">Los datos se muestran desde el archivo buscarCategorias.jsp</div>
+    <div class="row" id="categorias">
+      <!--  Los datos se muestran desde el archivo buscarCategorias.jsp -->
+    </div>
   </div>
 </body>
 </html>

@@ -81,66 +81,33 @@ public class ClasesLectura {
 		return vector;
 	}
 
-	public String[][] leerIndividual(String ruta, String relacion) {
+	public String[] leerIndividual(String ruta, String relacion) {
 
-		String vector[][] = {};
+		String vector[] = {};
 		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_RDFS_INF);
 		model.read(ruta, "RDF/XML");
-		int i = 0;
-		int y = 0;
 		String rango = "";
-		DatatypeProperty atributo = null;
+
+		ExtendedIterator iteratorObjecto = model.listObjectProperties();
+		while (iteratorObjecto.hasNext()) {
+			ObjectProperty objecto = (ObjectProperty) iteratorObjecto.next();
+
+			if (objecto.getLocalName().equals(relacion)) {
+				System.out.println("Rango: --- " + objecto.getRange().getLocalName());
+				rango = objecto.getRange().getLocalName();
+				break;
+			}
+		}
 
 		ExtendedIterator iteratorIndividual = model.listIndividuals();
 		while (iteratorIndividual.hasNext()) {
 			Individual individual = (Individual) iteratorIndividual.next();
 
-			ExtendedIterator iteratorObjecto = model.listObjectProperties();
-
-			while (iteratorObjecto.hasNext()) {
-				ObjectProperty objecto = (ObjectProperty) iteratorObjecto.next();
-
-				if (objecto.getLocalName().equals(relacion)) {
-					rango = objecto.getRange().getLocalName();
-				}
-			}
-
-			ExtendedIterator iteratorDatatype = model.listDatatypeProperties();
-			while (iteratorDatatype.hasNext()) {
-				DatatypeProperty atributos = (DatatypeProperty) iteratorDatatype.next();
-				if (atributos.getDomain().getLocalName().equals(rango)) {
-					atributo = atributos;
-				}
-			}
-
 			if (individual.getOntClass().getLocalName().equals(rango)) {
-				i++;
-
+				vector = append(vector, individual.getLocalName());
 			}
 		}
 
-		vector = new String[i][2];
-
-		ExtendedIterator iteratorIndividual2 = model.listIndividuals();
-		while (iteratorIndividual2.hasNext()) {
-			Individual individual2 = (Individual) iteratorIndividual2.next();
-
-			if (individual2.getOntClass().getLocalName().equals(rango)) {
-
-				vector[y][0] = (individual2.getLocalName());
-				String cadena = individual2.getPropertyValue(atributo).toString(); // Por ejemplo
-				String arrayCadena[] = cadena.split("htt"); // Esto separa en un array basándose en el separador que le
-															// pases
-				String datoSubstring = arrayCadena[0];
-				if (datoSubstring.length() != individual2.getPropertyValue(atributo).toString().length()) {
-					vector[y][1] = (datoSubstring.substring(0, datoSubstring.length() - 2));
-
-				} else {
-					vector[y][1] = (individual2.getPropertyValue(atributo).toString());
-				}
-				y++;
-			}
-		}
 		return vector;
 	}
 

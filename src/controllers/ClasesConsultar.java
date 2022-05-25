@@ -106,7 +106,7 @@ public class ClasesConsultar {
 
 			vector = append(vector, individuo);
 		}
-		
+
 		todo.setIndividuos(vector);
 		todo.setClases(clases);
 		todo.setAtributosYRelaciones(arrayTodos);
@@ -160,28 +160,6 @@ public class ClasesConsultar {
 		}
 
 		return vector;
-	}
-
-	public boolean eliminar(Individual individuo, String ruta) {
-		boolean dato = false;
-		OntModel model = ModelFactory.createOntologyModel(OntModelSpec.OWL_DL_MEM_RDFS_INF);
-		model.read(ruta, "RDF/XML");
-		ExtendedIterator listaIndi = model.listIndividuals();
-
-		while (listaIndi.hasNext()) {
-			Individual listaInd = (Individual) listaIndi.next();
-			ExtendedIterator listRel = model.listObjectProperties();
-			while (listRel.hasNext()) {
-				ObjectProperty listaInd2 = (ObjectProperty) listRel.next();
-				if (listaInd.getPropertyValue(listaInd2) != null) {
-					if (listaInd.getPropertyResourceValue(listaInd2).getLocalName().equals(individuo.getLocalName())) {
-						return true;
-					}
-				}
-			}
-		}
-
-		return false;
 	}
 
 	static <T> T[] append(T[] arr, T element) {
