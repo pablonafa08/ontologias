@@ -12,12 +12,12 @@
 <%@page import="models.Usuario"%>
 <%@page import="java.sql.*"%>
 <%@page import="controllers.Conexion"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Mis Ontologías</title>
+<title>Mis ontologÃ­as</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../js/bootstrap.min.js" rel="stylesheet">
 <link href="../style.css" rel="stylesheet">
@@ -35,18 +35,18 @@
 <body onload="doSearch();">
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <img src="../img/uasLogo.png" class="logo" alt="Logo" style="height: 50px; width: 50px;">
-    <a class="navbar-brand" href="../index.jsp">Ontologías</a>
+    <a class="navbar-brand" href="../index.jsp">OntologÃ­as</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <a class="navbar-brand" href="../categorias/categorias.jsp">Categorías</a>
-        <a class="navbar-brand" href="../categorias/ramas.jsp">Subcategorías</a>
-        <a class="navbar-brand" href="../ontologias/todas.jsp">Ontologías</a>
+        <a class="navbar-brand" href="../categorias/categorias.jsp">CategorÃ­as</a>
+        <a class="navbar-brand" href="../categorias/ramas.jsp">SubcategorÃ­as</a>
+        <a class="navbar-brand" href="../ontologias/todas.jsp">OntologÃ­as</a>
         <a class="navbar-brand" href="../usuarios/usuarios.jsp">
           <i class="fas fa-users"></i>
         </a>
-        <a class="navbar-brand" href="../ontologias/propias.jsp">Mis Ontologías</a>
+        <a class="navbar-brand" href="../ontologias/propias.jsp">Mis OntologÃ­as</a>
         <a class="navbar-brand" href="../noti.jsp">
           <i class="fas fa-bell"></i>
         </a>
@@ -77,8 +77,8 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="../perfil.jsp">Ver Perfil</a>
-              <a class="dropdown-item" href="../cambiar.jsp">Cambiar Contraseña</a>
-              <a class="dropdown-item" href="../salir.jsp">Cerrar sesión</a>
+              <a class="dropdown-item" href="../cambiar.jsp">Cambiar ContraseÃ±a</a>
+              <a class="dropdown-item" href="../salir.jsp">Cerrar sesiÃ³n</a>
             </div>
           </li>
         </ul>
@@ -87,18 +87,17 @@
   </nav>
   <br>
   <div class="container">
-    <div class="row justify-content-between">
-      <div class="col-2"></div>
-      <div class="col-3">
-        <a href="add.jsp" class="btn btn-primary" style="color: white;">
-          Añadir ontología
-          <i class="fas fa-plus"></i>
-        </a>
-      </div>
+    <div class="row justify-content-end m-0">
+      <a href="add.jsp" class="btn btn-primary" style="color: white;">
+        <i class="fas fa-plus"></i>
+        Nueva ontologÃ­a
+      </a>
     </div>
     <br>
     <div class="row justify-content-between align-items-center">
-      <div class="col-4 ">Ontologías</div>
+      <div class="col-4 ">
+        <h3>Mis ontologÃ­as</h3>
+      </div>
       <div class="col-4">
         <div class="input-group">
           <div class="input-group-prepend">
@@ -111,15 +110,15 @@
       </div>
     </div>
     <br>
-    <h3 id="datos3" style="display: none">No se han registrado ontologías</h3>
+    <h3 id="datos3" style="display: none">No se han registrado ontologÃ­as</h3>
     <h3 id="datos2" style="display: none">No se encontraron coincidencias</h3>
     <table class="table table-hover" id="datos">
       <thead class="thead-default">
         <tr style="text-align: center;">
           <th>Id</th>
-          <th>Título o descripción</th>
-          <th>Categoría</th>
-          <th>Subcategoría</th>
+          <th>TÃ­tulo o descripciÃ³n</th>
+          <th>CategorÃ­a</th>
+          <th>SubcategorÃ­a</th>
           <th>Abrir</th>
         <tr>
       </thead>
@@ -164,7 +163,7 @@
           	}
           %>
           <td style="text-align: center;">
-            <a href="todos.jsp?id=<%out.print(ontologia.getId());%>" class="btn btn-secondary">
+            <a href="todos.jsp?id=<%out.print(ontologia.getId());%>" class="btn btn-sm btn-primary">
               <i class="fas fa-folder"></i>
             </a>
           </td>

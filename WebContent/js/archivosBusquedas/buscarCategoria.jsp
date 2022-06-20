@@ -25,7 +25,7 @@
 					+ categoria.getImagen()
 					+ "'); background-color: rgb(167, 161, 161,0.5);  background-size: cover; box-shadow: -4px 5px rgb(237,234,245,0.5); \">";
 			salida += "<div class=\"card-body\">";
-			salida += "<p style=\"text-align: center; padding-top: 32%; color:white\" class=\"card-text\">"
+			salida += "<p style=\"text-align: center; padding-top: 32%; color:white; text-shadow: 1px 1px 10px #343a40\" class=\"card-text\">"
 					+ categoria.getTitulo() + "</p>";
 			salida += "</div>";
 			salida += "</div>";
@@ -39,7 +39,7 @@
 					+ "\" style=\"color:inherit; hover:'text-decoration: none;'\">";
 			salida += "<div class=\"card\" style=\"width: 11rem; height: 10rem; background-image: url('img/fondoCat.png'); background-color: rgb(167, 161, 161,0.5);  background-size: cover; box-shadow: -4px 5px rgb(237,234,245,0.5); \">";
 			salida += "<div class=\"card-body\">";
-			salida += "<p style=\"text-align: center; padding-top: 32%; color:white\" class=\"card-text\">"
+			salida += "<p style=\"text-align: center; padding-top: 32%; color:white; text-shadow: 1px 1px 10px #343a40\" class=\"card-text\">"
 					+ categoria.getTitulo() + "</p>";
 			salida += "</div>";
 			salida += "</div>";

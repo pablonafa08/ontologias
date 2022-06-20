@@ -12,7 +12,7 @@
 <%@page import="controllers.Conexion"%>
 <%@page import="controllers.Usuarios"%>
 <%@page import="models.Usuario"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +35,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <img src="img/uasLogo.png" class="logo" alt="Logo" style="height: 50px; width: 50px;">
-    <a class="navbar-brand" href="./index.jsp">Ontologías</a>
+    <a class="navbar-brand" href="./index.jsp">OntologÃ­as</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
       </ul>
@@ -43,16 +43,16 @@
         <%
         	if (request.getSession().getAttribute("UsuarioTipo").toString().equals("1")) {
         %>
-        <a class="navbar-brand" href="categorias/categorias.jsp">Categorías</a>
-        <a class="navbar-brand" href="categorias/ramas.jsp">Subcategorías</a>
-        <a class="navbar-brand" href="ontologias/todas.jsp">Ontologías</a>
+        <a class="navbar-brand" href="categorias/categorias.jsp">CategorÃ­as</a>
+        <a class="navbar-brand" href="categorias/ramas.jsp">SubcategorÃ­as</a>
+        <a class="navbar-brand" href="ontologias/todas.jsp">OntologÃ­as</a>
         <a class="navbar-brand" href="usuarios/usuarios.jsp">
           <i class="fas fa-users"></i>
         </a>
         <%
         	}
         %>
-        <a class="navbar-brand" href="ontologias/propias.jsp">Mis Ontologías</a>
+        <a class="navbar-brand" href="ontologias/propias.jsp">Mis OntologÃ­as</a>
         <a class="navbar-brand" href="noti.jsp">
           <i class="fas fa-bell"></i>
         </a>
@@ -85,8 +85,8 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="perfil.jsp">Ver Perfil</a>
-              <a class="dropdown-item" href="cambiar.jsp">Cambiar Contraseña</a>
-              <a class="dropdown-item" href="./salir.jsp">Cerrar sesión</a>
+              <a class="dropdown-item" href="cambiar.jsp">Cambiar ContraseÃ±a</a>
+              <a class="dropdown-item" href="./salir.jsp">Cerrar sesiÃ³n</a>
             </div>
           </li>
         </ul>
@@ -95,295 +95,313 @@
   </nav>
   <div class="container">
     <br> <br>
-    <table class="table table-hover" id="datos">
-      <thead class="thead-default">
-        <tr style="text-align: center;">
-          <th>Id</th>
-          <th>Ontología</th>
-          <th>Individuo a eliminar</th>
-          <th>Acciones</th>
-        <tr>
-      </thead>
-      <tbody>
-        <%
-        	Conexion cn = new Conexion();
-        		Connection conn = cn.GetConexion();
-        		Statement state = conn.createStatement();
-        		String UsuarioCategoria = (String) session.getAttribute("UsuarioCategoria").toString();
-        		String query;
-        		if (UsuarioCategoria.equals("0")) {
-        			query = "SELECT * FROM eliminar_individuos JOIN ontologias ON ontologias.id = eliminar_individuos.id_ontologia WHERE eliminar_individuos.estatus = 'P'";
-        		} else {
-        			query = "SELECT * FROM eliminar_individuos JOIN ontologias ON ontologias.id = eliminar_individuos.id_ontologia WHERE eliminar_individuos.estatus = 'P' AND id_categoria = "
-        					+ UsuarioCategoria;
-        		}
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-link active" id="nav-edit-tab" data-toggle="tab" href="#nav-edit" role="tab" aria-controls="nav-edit" aria-selected="true">Peticiones de modificaciÃ³n</a>
+        <a class="nav-link" id="nav-delete-tab" data-toggle="tab" href="#nav-delete" role="tab" aria-controls="nav-delete" aria-selected="false">Peticiones de eliminaciÃ³n</a>
+      </div>
+    </nav>
 
-        		ResultSet rs = state.executeQuery(query);
-        		while (rs.next()) {
-        %>
-        <tr>
-          <td style="text-align: center;">
+    <div class="tab-content" id="nav-tabContent" style="margin-top: 16px">
+      <div class="tab-pane fade" id="nav-delete" role="tabpanel" aria-labelledby="nav-delete-tab">
+        <table class="table table-hover" id="datos">
+          <thead class="thead-default">
+            <tr style="text-align: center;">
+              <th>Id</th>
+              <th>OntologÃ­a</th>
+              <th>Individuo a eliminar</th>
+              <th>Acciones</th>
+            <tr>
+          </thead>
+          <tbody>
             <%
-            	out.print(rs.getString("eliminar_individuos.id"));
+            	Conexion cn = new Conexion();
+            		Connection conn = cn.GetConexion();
+            		Statement state = conn.createStatement();
+            		String UsuarioCategoria = (String) session.getAttribute("UsuarioCategoria").toString();
+            		String query;
+            		if (UsuarioCategoria.equals("0")) {
+            			query = "SELECT * FROM eliminar_individuos JOIN ontologias ON ontologias.id = eliminar_individuos.id_ontologia WHERE eliminar_individuos.estatus = 'P'";
+            		} else {
+            			query = "SELECT * FROM eliminar_individuos JOIN ontologias ON ontologias.id = eliminar_individuos.id_ontologia WHERE eliminar_individuos.estatus = 'P' AND id_categoria = "
+            					+ UsuarioCategoria;
+            		}
+
+            		ResultSet rs = state.executeQuery(query);
+            		while (rs.next()) {
             %>
-          </td>
-          <td style="text-align: center;">
-            <%
-            	out.print(rs.getString("titulo"));
-            %>
-          </td>
-          <td style="text-align: center;">
-            <%
-            	out.print(rs.getString("individuo"));
-            %>
-          </td>
-          <td style="text-align: center;">
-            <a href="#eliminar-<%out.print(rs.getString("eliminar_individuos.id"));%>" class="btn btn-sm btn-danger" data-toggle="modal">
-              <i class="fas fa-trash-alt"></i>
-            </a>
-            <a href="#rechazar-<%out.print(rs.getString("eliminar_individuos.id"));%>" class="btn btn-sm btn-danger" data-toggle="modal">
-              <i class="fas fa-times"></i>
-            </a>
-            <div class="modal fade" id="eliminar-<%out.print(rs.getString("eliminar_individuos.id"));%>">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title">¿Estás seguro que quieres eliminar?</h4>
-                  </div>
-                  <div class="modal-body">
-                    <h5>
-                      Se eliminará el individuo:
-                      <%
-                    	out.print(rs.getString("individuo"));
-                    %>
-                    </h5>
-                  </div>
-                  <div class="modal-footer">
-                    <a
-                      href="ModificarAtributosConfirmacion?id=<%out.print(rs.getString("id_ontologia"));%>&individuo=<%out.print(rs.getString("individuo"));%>&ruta=<%out.print(rs.getString("ruta_archivo"));%>&id_e=<%out.print(rs.getString("eliminar_individuos.id"));%>&estatus=A&opcion=eliminar"
-                      class="btn btn-primary">Eliminar</a>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                  </div>
+            <tr>
+              <td style="text-align: center;">
+                <%
+                	out.print(rs.getString("eliminar_individuos.id"));
+                %>
+              </td>
+              <td style="text-align: center;">
+                <%
+                	out.print(rs.getString("titulo"));
+                %>
+              </td>
+              <td style="text-align: center;">
+                <%
+                	out.print(rs.getString("individuo"));
+                %>
+              </td>
+              <td>
+                <div class="row justify-content-center">
+                  <a href="#eliminar-<%out.print(rs.getString("eliminar_individuos.id"));%>" class="btn btn-sm btn-danger" style="margin-right: 8px" data-toggle="modal">
+                    <i class="fas fa-trash-alt"></i>
+                  </a>
+                  <a href="#rechazar-<%out.print(rs.getString("eliminar_individuos.id"));%>" class="btn btn-sm btn-danger" data-toggle="modal">
+                    <i class="fas fa-times"></i>
+                  </a>
                 </div>
-              </div>
-            </div>
-            <div class="modal fade" id="rechazar-<%out.print(rs.getString("eliminar_individuos.id"));%>">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title">¿Estás seguro que quieres rechazar?</h4>
-                  </div>
-                  <div class="modal-body">
-                    <h5>
-                      Se rechazará la eliminación del individuo:
-                      <%
-                    	out.print(rs.getString("individuo"));
-                    %>
-                    </h5>
-                  </div>
-                  <div class="modal-footer">
-                    <a
-                      href="ModificarAtributosConfirmacion?id=<%out.print(rs.getString("id_ontologia"));%>&individuo=<%out.print(rs.getString("individuo"));%>&ruta=<%out.print(rs.getString("ruta_archivo"));%>&id_e=<%out.print(rs.getString("eliminar_individuos.id"));%>&estatus=B&opcion=eliminar"
-                      class="btn btn-primary">Rechazar</a>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <%
-        	}
-        %>
-      </tbody>
-    </table>
-    <table class="table table-hover" id="datos2">
-      <thead class="thead-default">
-        <tr style="text-align: center;">
-          <th>Id</th>
-          <th>Ontología</th>
-          <th>Individuo</th>
-          <th>Nuevos datos</th>
-          <th>Acciones</th>
-        <tr>
-      </thead>
-      <tbody>
-        <%
-        	Connection conn3 = cn.GetConexion();
-        		Statement states = conn.createStatement();
-        		String UsuarioCategoria2 = (String) session.getAttribute("UsuarioCategoria").toString();
-        		String query2;
-        		if (UsuarioCategoria.equals("0")) {
-        			query = "SELECT * FROM modificar_individuos JOIN ontologias ON ontologias.id = modificar_individuos.id_ontologia WHERE modificar_individuos.estatus = 'P'";
-        		} else {
-        			query = "SELECT * FROM modificar_individuos JOIN ontologias ON ontologias.id = modificar_individuos.id_ontologia WHERE modificar_individuos.estatus = 'P' AND id_categoria = "
-        					+ UsuarioCategoria;
-        		}
-
-        		ResultSet rs1 = state.executeQuery(query);
-        		while (rs1.next()) {
-        %>
-        <tr>
-          <td style="text-align: center;">
-            <%
-            	out.print(rs1.getString("modificar_individuos.id"));
-            %>
-          </td>
-          <td style="text-align: center;">
-            <%
-            	out.print(rs1.getString("titulo"));
-            %>
-          </td>
-          <td style="text-align: center;">
-            <%
-            	out.print(rs1.getString("individuo"));
-            %>
-          </td>
-          <%
-          	
-          %>
-          <td style="text-align: center;">
-            <%
-            	int y = 0;
-            			String atributosSplit[] = rs1.getString("atributos").split("¬¬");
-
-            			int existe = atributosSplit.length;
-            			if (atributosSplit[existe - 1].substring(0, 1).equals("~")) {
-            				for (y = 0; y < atributosSplit.length - 1; y++) {
-            					out.print(" " + atributosSplit[y] + " ");
-            				}
-            			} else {
-            				for (y = 0; y < atributosSplit.length; y++) {
-            					out.print(" " + atributosSplit[y] + " ");
-            				}
-            			}
-
-            			String relacionesSplit[] = rs1.getString("atributos").split("~~");
-            			for (y = 1; y < relacionesSplit.length; y++) {
-            				out.print(relacionesSplit[y] + " ");
-            			}
-            %>
-          </td>
-          <td style="text-align: center;">
-            <a href="#modificar-<%out.print(rs1.getString("modificar_individuos.id"));%>" class="btn btn-sm btn-secondary" data-toggle="modal">
-              <i class="fas fa-pencil-alt"></i>
-            </a>
-            <a href="#rechazarc-<%out.print(rs1.getString("modificar_individuos.id"));%>" class="btn btn-sm btn-danger" data-toggle="modal">
-              <i class="fas fa-times"></i>
-            </a>
-            <div class="modal fade" id="modificar-<%out.print(rs1.getString("modificar_individuos.id"));%>">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title">
-                      Se modificara el individuo:
-                      <%
-                    	out.print(rs1.getString("individuo"));
-                    %>
-                    </h4>
-                  </div>
-                  <form method="post" action="ModificarAtributosConfirmacion">
-                    <div class="modal-body">
-                      <h5>Nuevos datos:</h5>
-                      <%
-                      	String atributosSplit2[] = rs1.getString("atributos").split("¬¬");
-
-                      			if (atributosSplit2[existe - 1].substring(0, 1).equals("~")) {
-                      				for (y = 0; y < atributosSplit2.length - 1; y++) {
-                      %>
-                      <label class="form-control">
-                        <%
-                        	out.print(" " + atributosSplit2[y] + " ");
+                <div class="modal fade" id="eliminar-<%out.print(rs.getString("eliminar_individuos.id"));%>">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Â¿EstÃ¡s seguro que quieres eliminar?</h4>
+                      </div>
+                      <div class="modal-body">
+                        <h5>
+                          Se eliminarÃ¡ el individuo:
+                          <%
+                        	out.print(rs.getString("individuo"));
                         %>
-                      </label>
-                      <%
-                      	}
-                      			} else {
-                      				for (y = 0; y < atributosSplit2.length; y++) {
-                      %>
-                      <label class="form-control">
-                        <%
-                        	out.print(" " + atributosSplit2[y] + " ");
-                        %>
-                      </label>
-                      <%
-                      	}
-                      			}
-                      %>
-                      <%
-                      	String relacionesSplit2[] = rs1.getString("atributos").split("~~");
-                      			for (y = 1; y < relacionesSplit2.length; y++) {
-                      %>
-                      <label class="form-control">
-                        <%
-                        	out.print(relacionesSplit2[y] + " ");
-                        %>
-                      </label>
-                      <%
-                      	}
-                      %>
-                      <input type="hidden" name="elid" value="<%out.print(rs1.getString("modificar_individuos.id"));%>">
+                        </h5>
+                      </div>
+                      <div class="modal-footer">
+                        <a
+                          href="ModificarAtributosConfirmacion?id=<%out.print(rs.getString("id_ontologia"));%>&individuo=<%out.print(rs.getString("individuo"));%>&ruta=<%out.print(rs.getString("ruta_archivo"));%>&id_e=<%out.print(rs.getString("eliminar_individuos.id"));%>&estatus=A&opcion=eliminar"
+                          class="btn btn-primary">Eliminar</a>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                      </div>
                     </div>
-                    <div class="modal-footer">
-                      <button type="submit" class="btn btn-primary">Modificar</button>
-                      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                  </div>
+                </div>
+                <div class="modal fade" id="rechazar-<%out.print(rs.getString("eliminar_individuos.id"));%>">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Â¿EstÃ¡s seguro que quieres rechazar?</h4>
+                      </div>
+                      <div class="modal-body">
+                        <h5>
+                          Se rechazarÃ¡ la eliminaciÃ³n del individuo:
+                          <%
+                        	out.print(rs.getString("individuo"));
+                        %>
+                        </h5>
+                      </div>
+                      <div class="modal-footer">
+                        <a
+                          href="ModificarAtributosConfirmacion?id=<%out.print(rs.getString("id_ontologia"));%>&individuo=<%out.print(rs.getString("individuo"));%>&ruta=<%out.print(rs.getString("ruta_archivo"));%>&id_e=<%out.print(rs.getString("eliminar_individuos.id"));%>&estatus=B&opcion=eliminar"
+                          class="btn btn-primary">Rechazar</a>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                      </div>
                     </div>
-                  </form>
-                </div>
-              </div>
-            </div>
-            <div class="modal fade" id="rechazarc-<%out.print(rs1.getString("modificar_individuos.id"));%>">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title">¿Estás seguro que quieres rechazar?</h4>
-                  </div>
-                  <div class="modal-body">
-                    <h5>
-                      Se rechazará la modificación del individuo:
-                      <%
-                    	out.print(rs1.getString("individuo"));
-                    %>
-                    </h5>
-                  </div>
-                  <div class="modal-footer">
-                    <a href="ModificarAtributosConfirmacion?id=<%out.print(rs1.getString("modificar_individuos.id"));%>&opcion=modificar" class="btn btn-primary">Rechazar</a>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                   </div>
                 </div>
-              </div>
-            </div>
-          </td>
-        </tr>
-        <%
-        	}
-        %>
-      </tbody>
-    </table>
+              </td>
+            </tr>
+            <%
+            	}
+            %>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tab-pane fade show active" id="nav-edit" role="tabpanel" aria-labelledby="nav-edit-tab">
+        <table class="table table-hover" id="datos2">
+          <thead class="thead-default">
+            <tr style="text-align: center;">
+              <th>Id</th>
+              <th>OntologÃ­a</th>
+              <th>Individuo</th>
+              <th>Nuevos datos</th>
+              <th>Acciones</th>
+            <tr>
+          </thead>
+          <tbody>
+            <%
+            	Connection conn3 = cn.GetConexion();
+            		Statement states = conn.createStatement();
+            		String UsuarioCategoria2 = (String) session.getAttribute("UsuarioCategoria").toString();
+            		String query2;
+            		if (UsuarioCategoria.equals("0")) {
+            			query = "SELECT * FROM modificar_individuos JOIN ontologias ON ontologias.id = modificar_individuos.id_ontologia WHERE modificar_individuos.estatus = 'P'";
+            		} else {
+            			query = "SELECT * FROM modificar_individuos JOIN ontologias ON ontologias.id = modificar_individuos.id_ontologia WHERE modificar_individuos.estatus = 'P' AND id_categoria = "
+            					+ UsuarioCategoria;
+            		}
+
+            		ResultSet rs1 = state.executeQuery(query);
+            		while (rs1.next()) {
+            %>
+            <tr>
+              <td style="text-align: center;">
+                <%
+                	out.print(rs1.getString("modificar_individuos.id"));
+                %>
+              </td>
+              <td style="text-align: center;">
+                <%
+                	out.print(rs1.getString("titulo"));
+                %>
+              </td>
+              <td style="text-align: center;">
+                <%
+                	out.print(rs1.getString("individuo"));
+                %>
+              </td>
+              <%
+              	
+              %>
+              <td style="text-align: center;">
+                <%
+                	int y = 0;
+                			String atributosSplit[] = rs1.getString("atributos").split("Â¬Â¬");
+
+                			int existe = atributosSplit.length;
+                			if (atributosSplit[existe - 1].substring(0, 1).equals("~")) {
+                				for (y = 0; y < atributosSplit.length - 1; y++) {
+                					out.print(" " + atributosSplit[y] + " ");
+                				}
+                			} else {
+                				for (y = 0; y < atributosSplit.length; y++) {
+                					out.print(" " + atributosSplit[y] + " ");
+                				}
+                			}
+
+                			String relacionesSplit[] = rs1.getString("atributos").split("~~");
+                			for (y = 1; y < relacionesSplit.length; y++) {
+                				out.print(relacionesSplit[y] + " ");
+                			}
+                %>
+              </td>
+              <td>
+                <div class="row justify-content-center">
+                  <a href="#modificar-<%out.print(rs1.getString("modificar_individuos.id"));%>" class="btn btn-sm btn-primary" style="margin-right: 8px" data-toggle="modal">
+                    <i class="fas fa-pencil-alt"></i>
+                  </a>
+                  <a href="#rechazarc-<%out.print(rs1.getString("modificar_individuos.id"));%>" class="btn btn-sm btn-danger" data-toggle="modal">
+                    <i class="fas fa-times"></i>
+                  </a>
+                </div>
+                <div class="modal fade" id="modificar-<%out.print(rs1.getString("modificar_individuos.id"));%>">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">
+                          Se modificarÃ¡ el individuo:
+                          <%
+                        	out.print(rs1.getString("individuo"));
+                        %>
+                        </h4>
+                      </div>
+                      <form method="post" action="ModificarAtributosConfirmacion">
+                        <div class="modal-body">
+                          <h5>Nuevos datos:</h5>
+                          <%
+                          	String atributosSplit2[] = rs1.getString("atributos").split("Â¬Â¬");
+
+                          			if (atributosSplit2[existe - 1].substring(0, 1).equals("~")) {
+                          				for (y = 0; y < atributosSplit2.length - 1; y++) {
+                          %>
+                          <label class="form-control">
+                            <%
+                            	out.print(" " + atributosSplit2[y] + " ");
+                            %>
+                          </label>
+                          <%
+                          	}
+                          			} else {
+                          				for (y = 0; y < atributosSplit2.length; y++) {
+                          %>
+                          <label class="form-control">
+                            <%
+                            	out.print(" " + atributosSplit2[y] + " ");
+                            %>
+                          </label>
+                          <%
+                          	}
+                          			}
+                          %>
+                          <%
+                          	String relacionesSplit2[] = rs1.getString("atributos").split("~~");
+                          			for (y = 1; y < relacionesSplit2.length; y++) {
+                          %>
+                          <label class="form-control">
+                            <%
+                            	out.print(relacionesSplit2[y] + " ");
+                            %>
+                          </label>
+                          <%
+                          	}
+                          %>
+                          <input type="hidden" name="elid" value="<%out.print(rs1.getString("modificar_individuos.id"));%>">
+                        </div>
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-primary">Modificar</button>
+                          <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal fade" id="rechazarc-<%out.print(rs1.getString("modificar_individuos.id"));%>">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h4 class="modal-title">Â¿EstÃ¡s seguro que quieres rechazar?</h4>
+                      </div>
+                      <div class="modal-body">
+                        <h5>
+                          Se rechazarÃ¡ la modificaciÃ³n del individuo:
+                          <%
+                        	out.print(rs1.getString("individuo"));
+                        %>
+                        </h5>
+                      </div>
+                      <div class="modal-footer">
+                        <a href="ModificarAtributosConfirmacion?id=<%out.print(rs1.getString("modificar_individuos.id"));%>&opcion=modificar" class="btn btn-primary">Rechazar</a>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <%
+            	}
+            %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
   <%
   	String respuesta = (String) session.getAttribute("respuesta");
   		if (respuesta != null) {
 
   			if (respuesta.equals("success_e")) {
-  				out.print("<script>toastr.success('Se eliminó el individuo'); </script> ");
+  				out.print("<script>toastr.success('Se eliminÃ³ el individuo'); </script> ");
   			} else if (respuesta.equals("nosuccess_e")) {
   				out.print("<script>toastr.error('No se pudo eliminar el individuo'); </script> ");
   			} else if (respuesta.equals("error_e")) {
   				out.print("<script>toastr.error('Error'); </script> ");
   			} else if (respuesta.equals("success_r")) {
-  				out.print("<script>toastr.success('Se rechazó la petición de eliminación'); </script> ");
+  				out.print("<script>toastr.success('Se rechazÃ³ la peticiÃ³n de eliminaciÃ³n'); </script> ");
   			} else if (respuesta.equals("nosuccess_r")) {
-  				out.print("<script>toastr.error('No se pudo rechazar la petición de eliminación'); </script> ");
+  				out.print("<script>toastr.error('No se pudo rechazar la peticiÃ³n de eliminaciÃ³n'); </script> ");
   			} else if (respuesta.equals("success_m")) {
-  				out.print("<script>toastr.success('Se modificó el individuo'); </script> ");
+  				out.print("<script>toastr.success('Se modificÃ³ el individuo'); </script> ");
   			} else if (respuesta.equals("nosuccess_m")) {
   				out.print("<script>toastr.error('No se pudo modificar el individuo'); </script> ");
   			} else if (respuesta.equals("success_rm")) {
-  				out.print("<script>toastr.success('Se rechazó la petición de modificacion'); </script> ");
+  				out.print("<script>toastr.success('Se rechazÃ³ la peticiÃ³n de modificacion'); </script> ");
   			} else if (respuesta.equals("nosuccess_rm")) {
   				out.print(
-  						"<script>toastr.error('No se pudo rechazar la petición de modificacion'); </script> ");
+  						"<script>toastr.error('No se pudo rechazar la peticiÃ³n de modificacion'); </script> ");
   			} else if (respuesta.equals("error_m")) {
   				out.print("<script>toastr.error('Error'); </script> ");
   			}

@@ -4,6 +4,7 @@
 	if (usuario2 == null) {
 		response.sendRedirect("/ontologias/login.jsp");
 	} else {
+		String clase_s = request.getSession().getAttribute("clase_e").toString();
 %>
 <%@page import="controllers.ClasesLectura"%>
 <%@page import="controllers.ClasesConsultar"%>
@@ -14,12 +15,15 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.*"%>
 <%@page import="controllers.Conexion"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Insertar</title>
+<title>Nuevo individuo "<%
+	out.print(clase_s);
+%>"
+</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../js/bootstrap.min.js" rel="stylesheet">
 <link href="../style.css" rel="stylesheet">
@@ -34,7 +38,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <img src="../img/uasLogo.png" class="logo" alt="Logo" style="height: 50px; width: 50px;">
-    <a class="navbar-brand" href="../index.jsp">Ontologías</a>
+    <a class="navbar-brand" href="../index.jsp">OntologÃ­as</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
       </ul>
@@ -42,16 +46,16 @@
         <%
         	if (request.getSession().getAttribute("UsuarioTipo").toString().equals("1")) {
         %>
-        <a class="navbar-brand" href="../categorias/categorias.jsp">Categorías</a>
-        <a class="navbar-brand" href="../categorias/ramas.jsp">Subcategorías</a>
-        <a class="navbar-brand" href="../ontologias/todas.jsp">Ontologías</a>
+        <a class="navbar-brand" href="../categorias/categorias.jsp">CategorÃ­as</a>
+        <a class="navbar-brand" href="../categorias/ramas.jsp">SubcategorÃ­as</a>
+        <a class="navbar-brand" href="../ontologias/todas.jsp">OntologÃ­as</a>
         <a class="navbar-brand" href="../usuarios/usuarios.jsp">
           <i class="fas fa-users"></i>
         </a>
         <%
         	}
         %>
-        <a class="navbar-brand" href="../ontologias/propias.jsp">Mis Ontologías</a>
+        <a class="navbar-brand" href="../ontologias/propias.jsp">Mis OntologÃ­as</a>
         <a class="navbar-brand" href="../noti.jsp">
           <i class="fas fa-bell"></i>
         </a>
@@ -84,121 +88,132 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="../perfil.jsp">Ver Perfil</a>
-              <a class="dropdown-item" href="../cambiar.jsp">Cambiar Contraseña</a>
-              <a class="dropdown-item" href="../salir.jsp">Cerrar sesión</a>
+              <a class="dropdown-item" href="../cambiar.jsp">Cambiar ContraseÃ±a</a>
+              <a class="dropdown-item" href="../salir.jsp">Cerrar sesiÃ³n</a>
             </div>
           </li>
         </ul>
       </form>
     </div>
   </nav>
-  <%
-  	String clase_s = request.getSession().getAttribute("clase_e").toString();
-  %>
-  <center>
-    <h2>
-      <%
-      	out.print(clase_s);
-      %>
-    </h2>
-  </center>
-  <div class="container row">
-    <div class="col-1"></div>
-    <div class="col-3">
-      <%
-      	String id_ontologia = request.getSession().getAttribute("id_ontologia").toString();
-      %>
-      <a href="ver.jsp" class="btn btn-primary" style="color: white;">
-        <i class="fas fa-mouse-pointer"></i>
-        Seleccionar Clase
-      </a>
-      <br> <br>
-      <a href="todos.jsp?id=<%out.print(id_ontologia);%>" class="btn btn-primary" style="color: white;">
-        <i class="fas fa-search"></i>
-        Consultar
-      </a>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col">
+        <h3>
+          Nuevo individuo "<%
+        	out.print(clase_s);
+        %>"
+        </h3>
+      </div>
+      <div class="col-1"></div>
     </div>
-    <div class="container col-8">
-      <form class="form-group" method="post" action="../InsertarAtributos">
-        <label>Nombre de Individuo</label>
-        <input class="form-control" type="text" name="nombre_individuo">
+    <br>
+    <div class="row">
+      <div class="col-2">
+        <a href="ver.jsp" class="btn btn-primary" style="color: white;">
+          <i class="fas fa-mouse-pointer"></i>
+          Seleccionar clase
+        </a>
+        <br> <br>
         <%
-        	ClasesLectura clases = new ClasesLectura();
-        		Utils utils = new Utils();
-        		ClasesConsultar consulta = new ClasesConsultar();
+        	String id_ontologia = request.getSession().getAttribute("id_ontologia").toString();
+        %>
+        <a href="todos.jsp?id=<%out.print(id_ontologia);%>" class="btn btn-primary" style="color: white;">
+          <i class="fas fa-search"></i>
+          Consultar datos de la ontologÃ­a
+        </a>
+      </div>
+      <div class="col">
+        <div class="card" style="box-shadow: -4px 5px rgb(237, 234, 245, 0.5);">
+          <div class="card-body ">
+            <div class="row justify-content-center">
+              <div class="col-8">
+                <form class="form-group" method="post" action="../InsertarAtributos">
+                  <div class="form-group">
+                    <label style="font-weight: 600">Nombre de individuo</label>
+                    <input class="form-control" type="text" name="nombre_individuo">
+                  </div>
+                  <%
+                  	ClasesLectura clases = new ClasesLectura();
+                  		Utils utils = new Utils();
+                  		ClasesConsultar consulta = new ClasesConsultar();
 
-        		int i = 0;
-        		String nombre = request.getSession().getAttribute("ruta").toString();
-        		String ruta = utils.getRuta() + nombre;
-        		String clase = request.getSession().getAttribute("clase_e").toString();
-        		String[] NSySimbolo = consulta.consultarNSySimbolo(ruta);
-        		String NS = NSySimbolo[0];
-        		String simbolo = NSySimbolo[1];
-        		String objetos[] = clases.leerObjetos(ruta, clase, simbolo, NS);
-        		DatatypeProperty atributoss[] = consulta.consultarAtributos(ruta, clase, simbolo, NS);
-        		for (DatatypeProperty atributo : atributoss) {
-        %>
-        <label>
-          <%
-          	out.print(atributo.getLocalName());
-          %>
-        </label>
-        <%
-        	if (atributo.getRange().getLocalName().equals("decimal")) {
-        %>
-        <input class="form-control" type="number" step="any" name="<%out.print(atributo.getLocalName());%>">
-        <%
-        	} else if (atributo.getRange().getLocalName().equals("integer")
-        					|| atributo.getRange().getLocalName().equals("int")) {
-        %>
-        <input class="form-control" type="number" name="<%out.print(atributo.getLocalName());%>">
-        <%
-        	} else {
-        %>
-        <input class="form-control" type="text" name="<%out.print(atributo.getLocalName());%>">
-        <%
-        	}
-        %>
-        <%
-        	}
-        %>
-        <%
-        	for (String objeto : objetos) {
-        %>
-        <label>
-          <%
-          	out.print(objeto);
-          %>
-        </label>
-        <select class="form-control" name="<%out.print(objeto);%>">
-          <%
-          	String individuals[] = clases.leerIndividual(ruta, objeto);
-          			for (String individual : individuals) {
-          %>
-          <option value="<%out.print(individual);%>">
-            <%
-            	out.print(individual);
-            %>
-          </option>
-          <%
-          	i++;
-          %>
-          <%
-          	}
-          %>
-        </select>
-        <%
-        	//out.print(i);
-        			i = 0;
-        %>
-        <%
-        	}
-        %>
-        <button type="submit" style="margin-top: 1%" class="btn btn-primary">
-          <i class="fas fa-save"></i>
-          Guardar
-        </button>
-      </form>
+                  		String nombre = request.getSession().getAttribute("ruta").toString();
+                  		String ruta = utils.getRuta() + nombre;
+                  		String clase = request.getSession().getAttribute("clase_e").toString();
+                  		String[] NSySimbolo = consulta.consultarNSySimbolo(ruta);
+                  		String NS = NSySimbolo[0];
+                  		String simbolo = NSySimbolo[1];
+                  		String objetos[] = clases.leerObjetos(ruta, clase, simbolo, NS);
+                  		DatatypeProperty atributoss[] = consulta.consultarAtributos(ruta, clase, simbolo, NS);
+
+                  		for (DatatypeProperty atributo : atributoss) {
+                  %>
+                  <div class="form-group">
+                    <label style="font-weight: 600">
+                      <%
+                      	out.print(atributo.getLocalName());
+                      %>
+                    </label>
+                    <%
+                    	if (atributo.getRange().getLocalName().equals("decimal")) {
+                    %>
+                    <input class="form-control" type="number" step="any" name="<%out.print(atributo.getLocalName());%>">
+                    <%
+                    	} else if (atributo.getRange().getLocalName().equals("integer")
+                    					|| atributo.getRange().getLocalName().equals("int")) {
+                    %>
+                    <input class="form-control" type="number" name="<%out.print(atributo.getLocalName());%>">
+                    <%
+                    	} else {
+                    %>
+                    <input class="form-control" type="text" name="<%out.print(atributo.getLocalName());%>">
+                    <%
+                    	}
+                    %>
+                  </div>
+                  <%
+                  	}
+
+                  		for (String objeto : objetos) {
+                  %>
+                     <div class="form-group">
+                  <label style="font-weight: 600">
+                    <%
+                    	out.print(objeto);
+                    %>
+                  </label>
+                  <select class="form-control" name="<%out.print(objeto);%>">
+                    <%
+                    	String individuals[] = clases.leerIndividual(ruta, objeto);
+                    			for (String individual : individuals) {
+                    %>
+                    <option value="<%out.print(individual);%>">
+                        <%
+                      	out.print(individual);
+                      %>
+                      </option>
+                      <%
+                    	}
+                    %>
+                  </select>
+                        </div>
+                  <%
+                  	}
+                  %>
+                  <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-plus"></i>
+                    Agregar
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-1"></div>
     </div>
   </div>
 </body>

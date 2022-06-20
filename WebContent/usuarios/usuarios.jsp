@@ -14,7 +14,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.*"%>
 <%@page import="controllers.Conexion"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,18 +39,18 @@
 <body onload="doSearch();">
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <img src="../img/uasLogo.png" class="logo" alt="Logo" style="height: 50px; width: 50px;">
-    <a class="navbar-brand" href="../index.jsp">Ontologías</a>
+    <a class="navbar-brand" href="../index.jsp">OntologÃ­as</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <a class="navbar-brand" href="../categorias/categorias.jsp">Categorías</a>
-        <a class="navbar-brand" href="../categorias/ramas.jsp">Subcategorías</a>
-        <a class="navbar-brand" href="../ontologias/todas.jsp">Ontologías</a>
+        <a class="navbar-brand" href="../categorias/categorias.jsp">CategorÃ­as</a>
+        <a class="navbar-brand" href="../categorias/ramas.jsp">SubcategorÃ­as</a>
+        <a class="navbar-brand" href="../ontologias/todas.jsp">OntologÃ­as</a>
         <a class="navbar-brand" href="../usuarios/usuarios.jsp">
           <i class="fas fa-users"></i>
         </a>
-        <a class="navbar-brand" href="../ontologias/propias.jsp">Mis Ontologías</a>
+        <a class="navbar-brand" href="../ontologias/propias.jsp">Mis OntologÃ­as</a>
         <a class="navbar-brand" href="../noti.jsp">
           <i class="fas fa-bell"></i>
         </a>
@@ -83,8 +83,8 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="../perfil.jsp">Ver Perfil</a>
-              <a class="dropdown-item" href="../cambiar.jsp">Cambiar Contraseña</a>
-              <a class="dropdown-item" href="../salir.jsp">Cerrar sesión</a>
+              <a class="dropdown-item" href="../cambiar.jsp">Cambiar ContraseÃ±a</a>
+              <a class="dropdown-item" href="../salir.jsp">Cerrar sesiÃ³n</a>
             </div>
           </li>
         </ul>
@@ -93,18 +93,17 @@
   </nav>
   <br>
   <div class="container">
-    <div class="row justify-content-between">
-      <div class="col-2"></div>
-      <div class="col-3">
-        <a href="add.jsp" class="btn btn-primary" style="color: white;">
-          Añadir usuarios
-          <i class="fas fa-plus"></i>
-        </a>
-      </div>
+    <div class="row justify-content-end m-0">
+      <a href="add.jsp" class="btn btn-primary" style="color: white;">
+        <i class="fas fa-plus"></i>
+        Nuevo usuario
+      </a>
     </div>
     <br>
     <div class="row justify-content-between align-items-center">
-      <div class="col-4 ">Usuarios</div>
+      <div class="col-4">
+        <h3>Usuarios</h3>
+      </div>
       <div class="col-4">
         <div class="input-group">
           <div class="input-group-prepend">
@@ -126,7 +125,7 @@
             <th>Nombres</th>
             <th>Correo</th>
             <th>Usuario</th>
-            <th>Ontologías subidas</th>
+            <th>OntologÃ­as subidas</th>
             <th>Acciones</th>
           <tr>
         </thead>
@@ -165,13 +164,15 @@
               			}
               %>
             </td>
-            <td style="text-align: center;">
-              <a href="#modificar-<%out.print(usuario.getId());%>" class="btn btn-secondary" data-toggle="modal">
-                <i class="fas fa-pencil-alt"></i>
-              </a>
-              <a href="#eliminar-<%out.print(usuario.getId());%>" class="btn btn-danger" data-toggle="modal">
-                <i class="fas fa-trash-alt"></i>
-              </a>
+            <td>
+              <div class="row justify-content-center">
+                <a href="#modificar-<%out.print(usuario.getId());%>" class="btn btn-sm btn-primary" style="margin-right: 8px" data-toggle="modal">
+                  <i class="fas fa-pencil-alt"></i>
+                </a>
+                <a href="#eliminar-<%out.print(usuario.getId());%>" class="btn btn-sm btn-danger" data-toggle="modal">
+                  <i class="fas fa-trash-alt"></i>
+                </a>
+              </div>
               <!-- Modificar -->
               <div class="modal fade" id="modificar-<%out.print(usuario.getId());%>">
                 <div class="modal-dialog" role="document">
@@ -213,11 +214,11 @@
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
-                      <h4 class="modal-title">¿Estás seguro que quieres eliminar?</h4>
+                      <h4 class="modal-title">Â¿EstÃ¡s seguro que quieres eliminar?</h4>
                     </div>
                     <div class="modal-body">
                       <h5>
-                        Se eliminará el usuario:
+                        Se eliminarÃ¡ el usuario:
                         <%
                       	out.print(usuario.getNombres() + " " + usuario.getApp() + " " + usuario.getApm());
                       %>
@@ -244,13 +245,13 @@
   		if (respuesta != null) {
 
   			if (respuesta.equals("success_e")) {
-  				out.print("<script>toastr.success('Se eliminó el usuario'); </script> ");
+  				out.print("<script>toastr.success('Se eliminÃ³ el usuario'); </script> ");
   			} else if (respuesta.equals("nosuccess_e")) {
   				out.print("<script>toastr.error('No se pudo eliminar el usuario'); </script> ");
   			} else if (respuesta.equals("error_e")) {
   				out.print("<script>toastr.error('Error al eliminar el usuario'); </script> ");
   			} else if (respuesta.equals("success_m")) {
-  				out.print("<script>toastr.success('Se modificó el usuario'); </script> ");
+  				out.print("<script>toastr.success('Se modificÃ³ el usuario'); </script> ");
   			} else if (respuesta.equals("nosuccess_m")) {
   				out.print("<script>toastr.error('No se pudo modificar el usuario'); </script> ");
   			} else if (respuesta.equals("error_m")) {

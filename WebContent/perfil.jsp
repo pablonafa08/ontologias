@@ -10,7 +10,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.sql.*"%>
 <%@page import="controllers.Conexion"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,7 +33,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <img src="img/uasLogo.png" class="logo" alt="Logo" style="height: 50px; width: 50px;" />
-    <a class="navbar-brand" href="./index.jsp">Ontolog�as</a>
+    <a class="navbar-brand" href="./index.jsp">Ontologías</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
       </ul>
@@ -41,16 +41,16 @@
         <%
         	if (request.getSession().getAttribute("UsuarioTipo").toString().equals("1")) {
         %>
-        <a class="navbar-brand" href="categorias/categorias.jsp">Categor�as</a>
-        <a class="navbar-brand" href="categorias/ramas.jsp">Subcategor�as</a>
-        <a class="navbar-brand" href="ontologias/todas.jsp">Ontolog�as</a>
+        <a class="navbar-brand" href="categorias/categorias.jsp">Categorías</a>
+        <a class="navbar-brand" href="categorias/ramas.jsp">Subcategorías</a>
+        <a class="navbar-brand" href="ontologias/todas.jsp">Ontologías</a>
         <a class="navbar-brand" href="usuarios/usuarios.jsp">
           <i class="fas fa-users"></i>
         </a>
         <%
         	}
         %>
-        <a class="navbar-brand" href="ontologias/propias.jsp">Mis Ontolog�as</a>
+        <a class="navbar-brand" href="ontologias/propias.jsp">Mis Ontologías</a>
         <a class="navbar-brand" href="noti.jsp">
           <i class="fas fa-bell"></i>
         </a>
@@ -83,81 +83,89 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="perfil.jsp">Ver Perfil</a>
-              <a class="dropdown-item" href="cambiar.jsp">Cambiar Contrase�a</a>
-              <a class="dropdown-item" href="./salir.jsp">Cerrar sesi�n</a>
+              <a class="dropdown-item" href="cambiar.jsp">Cambiar Contraseña</a>
+              <a class="dropdown-item" href="./salir.jsp">Cerrar sesión</a>
             </div>
           </li>
         </ul>
       </form>
     </div>
   </nav>
-  <br>
   <div class="container">
-    <h4>Detalles del perfil</h4>
-    <%
-    	Conexion cn = new Conexion();
-    		Connection conn = cn.GetConexion();
-    		Statement state = conn.createStatement();
-    		Statement state2 = conn.createStatement();
-    		Statement state3 = conn.createStatement();
-    		String cate = "";
-    		String cate2 = "";
+    <br>
+    <div class="row">
+      <div class="col-1 "></div>
+      <div class="col">
+        <h3>Perfil</h3>
+      </div>
+      <div class="col-1"></div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-1"></div>
+      <div class="col ">
+        <%
+        	Conexion cn = new Conexion();
+        		Connection conn = cn.GetConexion();
+        		Statement state = conn.createStatement();
+        		Statement state2 = conn.createStatement();
+        		Statement state3 = conn.createStatement();
+        		String cate = "";
+        		String cate2 = "";
 
-    		Usuarios conexion = new Usuarios();
-    		ArrayList<Usuario> usuarios = conexion
-    				.buscarXId(request.getSession().getAttribute("UsuarioId").toString());
-    		for (Usuario usuario : usuarios) {
-    			ResultSet rs = state
-    					.executeQuery("SELECT descripcion FROM tipo_usuarios WHERE id = " + usuario.getTipo());
-    			ResultSet rs2 = state2.executeQuery("SELECT categoria FROM usuarios WHERE id = "
-    					+ request.getSession().getAttribute("UsuarioId").toString());
-    			while (rs2.next()) {
-    				cate = rs2.getString("categoria");
-    			}
-    			if (cate != null) {
-    				ResultSet rs3 = state3.executeQuery("SELECT titulo FROM categorias WHERE id = " + cate);
-    				while (rs3.next()) {
-    					cate2 = rs3.getString("titulo");
-    				}
-    			} else {
-    				cate2 = "GENERAL";
-    			}
-    %>
-    <div class="card" style="box-shadow: -4px 5px rgb(237, 234, 245, 0.5);">
-      <div class="card-body ">
-        <form action="ModificarPerfil" method="post" enctype="multipart/form-data">
-          <div class="row">
-            <div class="col-6">
-              <div class="form-group col-9">
-                <label for="">Nombre(s)</label>
-                <input type="text" class="form-control" placeholder="Nombre(s)" name="nombres" value="<%out.print(usuario.getNombres());%>">
-              </div>
-              <div class="form-group col-9">
-                <label for="">Apellido Paterno</label>
-                <input type="text" class="form-control" placeholder="Apellido Paterno" name="app" value="<%out.print(usuario.getApp());%>">
-              </div>
-              <div class="form-group col-9">
-                <label for="">Apellido Materno</label>
-                <input type="text" class="form-control" placeholder="Apellido Materno" name="apm" value="<%out.print(usuario.getApm());%>">
-              </div>
-              <div class="form-group col-9">
-                <label for="">Correo</label>
-                <input type="text" class="form-control" value="<%out.print(usuario.getCorreo());%>" readonly>
-              </div>
-              <div class="form-group col-9">
-                <label for="">Tipo de Usuario</label>
-                <input type="text" class="form-control" value="<%while (rs.next()) {
+        		Usuarios conexion = new Usuarios();
+        		ArrayList<Usuario> usuarios = conexion
+        				.buscarXId(request.getSession().getAttribute("UsuarioId").toString());
+        		for (Usuario usuario : usuarios) {
+        			ResultSet rs = state
+        					.executeQuery("SELECT descripcion FROM tipo_usuarios WHERE id = " + usuario.getTipo());
+        			ResultSet rs2 = state2.executeQuery("SELECT categoria FROM usuarios WHERE id = "
+        					+ request.getSession().getAttribute("UsuarioId").toString());
+        			while (rs2.next()) {
+        				cate = rs2.getString("categoria");
+        			}
+        			if (cate != null) {
+        				ResultSet rs3 = state3.executeQuery("SELECT titulo FROM categorias WHERE id = " + cate);
+        				while (rs3.next()) {
+        					cate2 = rs3.getString("titulo");
+        				}
+        			} else {
+        				cate2 = "GENERAL";
+        			}
+        %>
+        <div class="card" style="box-shadow: -4px 5px rgb(237, 234, 245, 0.5);">
+          <div class="card-body ">
+            <form action="ModificarPerfil" method="post" enctype="multipart/form-data">
+              <div class="row">
+                <div class="col-6">
+                  <div class="form-group">
+                    <label style="font-weight: 600">Nombre(s)</label>
+                    <input type="text" class="form-control" placeholder="Nombre(s)" name="nombres" value="<%out.print(usuario.getNombres());%>">
+                  </div>
+                  <div class="form-group">
+                    <label style="font-weight: 600">Apellido paterno</label>
+                    <input type="text" class="form-control" placeholder="Apellido paterno" name="app" value="<%out.print(usuario.getApp());%>">
+                  </div>
+                  <div class="form-group">
+                    <label style="font-weight: 600">Apellido materno</label>
+                    <input type="text" class="form-control" placeholder="Apellido materno" name="apm" value="<%out.print(usuario.getApm());%>">
+                  </div>
+                  <div class="form-group">
+                    <label style="font-weight: 600">Correo electrónico</label>
+                    <input type="text" class="form-control" value="<%out.print(usuario.getCorreo());%>" readonly>
+                  </div>
+                  <div class="form-group">
+                    <label style="font-weight: 600">Tipo de usuario</label>
+                    <input type="text" class="form-control" value="<%while (rs.next()) {
 						out.print(rs.getString("descripcion"));
 					}%>" readonly>
-              </div>
-              <div class="form-group col-9">
-                <label for="">Categoria</label>
-                <input type="text" class="form-control" value="<%out.print(cate2);%>" readonly>
-              </div>
-            </div>
-            <div class="col-5">
-              <div class="row">
-                <div class="col-7">
+                  </div>
+                  <div class="form-group">
+                    <label style="font-weight: 600">Categoría</label>
+                    <input type="text" class="form-control" value="<%out.print(cate2);%>" readonly>
+                  </div>
+                </div>
+                <div class="col-6" style="padding: 0 40px;">
                   <%
                   	if (usuario.getFoto() != null) {
                   %>
@@ -170,32 +178,34 @@
                   <%
                   	}
                   %>
-                  <br>
-                  <input type="file" name="file-1" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} archivos seleccionados" multiple />
-                  <label for="file-1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17">
+                  <div class="form-group">
+                    <label style="font-weight: 600">Eliminar Foto</label>
+                    <input type="checkbox" class="" name="eliminar_foto" id="eliminar_foto">
+                    <br>
+                    <input type="file" name="file-1" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} archivos seleccionados" multiple />
+                    <label for="file-1">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17">
 											<path
-                        d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
-                    <span class="iborrainputfile">Seleccionar im�gen</span>
-                  </label>
-                  <button type="submit" class="btn btn-primary">
-                    <i class="fas fa-save"></i>
-                    Guardar
-                  </button>
-                </div>
-                <div class="form-group">
-                  <label for="">Eliminar Foto</label>
-                  <input type="checkbox" class="" name="eliminar_foto" id="eliminar_foto">
+                          d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
+                      <span class="iborrainputfile">Seleccionar imágen</span>
+                    </label>
+                    <br> <br>
+                    <button type="submit" class="btn btn-primary">
+                      <i class="fas fa-save"></i>
+                      Guardar
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
+            </form>
           </div>
-        </form>
+        </div>
+        <%
+        	}
+        %>
       </div>
+      <div class="col-1"></div>
     </div>
-    <%
-    	}
-    %>
   </div>
   <%
   	String respuesta = (String) session.getAttribute("respuesta");

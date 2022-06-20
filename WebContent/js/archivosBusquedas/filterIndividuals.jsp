@@ -87,7 +87,7 @@
 		for (DatatypeProperty atributo : atributos) {
 			numAtrib++;
 			String cadena = individuo.getPropertyValue(atributo).toString(); //Por ejemplo
-			String arrayCadena[] = cadena.split("http://www.w3.org"); //Esto separa en un array bas�ndose en el separador que le pases
+			String arrayCadena[] = cadena.split("http://www.w3.org"); //Esto separa en un array basándose en el separador que le pases
 			String datoSubstring = arrayCadena[0];
 
 			salida += "\"" + atributo.getLocalName() + "\": \"";

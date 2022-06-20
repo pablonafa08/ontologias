@@ -4,6 +4,7 @@ html {
   margin: 0;
   padding: 0;
   height: 100%;
+  color: #343a40;
 }
 
 .user_card {
@@ -61,7 +62,7 @@ html {
 }
 
 .input-group-text {
-  background: #60a3bc !important;
+  background: #007bff !important;
   color: white !important;
   border: 0 !important;
   border-radius: 0.25rem 0 0 0.25rem !important;
@@ -71,4 +72,9 @@ html {
 .input_pass:focus {
   box-shadow: none !important;
   outline: 0px !important;
+}
+
+h3,
+table {
+  color: #343a40 !important;
 }

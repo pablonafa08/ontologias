@@ -7,12 +7,12 @@
 	String password = request.getParameter("contra");
 %>
 <%@include file="datosLogin.jsp"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Iniciar Sesión</title>
+<title>Iniciar SesiÃ³n</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="js/bootstrap.min.js" rel="stylesheet">
 <link href="style.css" rel="stylesheet">
@@ -24,7 +24,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <img src="img/uasLogo.png" class="logo" alt="Logo" style="height: 50px; width: 50px;">
-    <a class="navbar-brand" href="login.jsp">Ontologías</a>
+    <a class="navbar-brand" href="login.jsp">OntologÃ­as</a>
   </nav>
   <div class="container h-100">
     <div class="d-flex justify-content-center h-100">
@@ -54,11 +54,11 @@
               </div>
               <input type="password" name="contra" class="form-control input_pass" value="<%if (password != null) {
 				out.print(password);
-			}%>" placeholder="Contraseña">
+			}%>" placeholder="ContraseÃ±a">
             </div>
             <%
             	if (request.getAttribute("noentro") == "no") {
-            		out.print("<div class='alert alert-danger'>Usuario o Contraseña incorrecta</div>");
+            		out.print("<div class='alert alert-danger'>Usuario o ContraseÃ±a incorrecta</div>");
             	}
             %>
             <div class="d-flex justify-content-center mt-3 login_container">

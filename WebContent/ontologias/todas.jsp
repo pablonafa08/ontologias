@@ -21,12 +21,12 @@
 <%@page import="models.Usuario"%>
 <%@page import="java.sql.*"%>
 <%@page import="controllers.Conexion"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Ontologías</title>
+<title>OntologÃ­as</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../js/bootstrap.min.js" rel="stylesheet">
 <link href="../style.css" rel="stylesheet">
@@ -47,18 +47,18 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <img src="../img/uasLogo.png" class="logo" alt="Logo" style="height: 50px; width: 50px;">
-    <a class="navbar-brand" href="../index.jsp">Ontologías</a>
+    <a class="navbar-brand" href="../index.jsp">OntologÃ­as</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <a class="navbar-brand" href="../categorias/categorias.jsp">Categorías</a>
-        <a class="navbar-brand" href="../categorias/ramas.jsp">Subcategorías</a>
-        <a class="navbar-brand" href="../ontologias/todas.jsp">Ontologías</a>
+        <a class="navbar-brand" href="../categorias/categorias.jsp">CategorÃ­as</a>
+        <a class="navbar-brand" href="../categorias/ramas.jsp">SubcategorÃ­as</a>
+        <a class="navbar-brand" href="../ontologias/todas.jsp">OntologÃ­as</a>
         <a class="navbar-brand" href="../usuarios/usuarios.jsp">
           <i class="fas fa-users"></i>
         </a>
-        <a class="navbar-brand" href="../ontologias/propias.jsp">Mis Ontologías</a>
+        <a class="navbar-brand" href="../ontologias/propias.jsp">Mis OntologÃ­as</a>
         <a class="navbar-brand" href="../noti.jsp">
           <i class="fas fa-bell"></i>
         </a>
@@ -91,8 +91,8 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="../perfil.jsp">Ver Perfil</a>
-              <a class="dropdown-item" href="../cambiar.jsp">Cambiar Contraseña</a>
-              <a class="dropdown-item" href="../salir.jsp">Cerrar sesión</a>
+              <a class="dropdown-item" href="../cambiar.jsp">Cambiar ContraseÃ±a</a>
+              <a class="dropdown-item" href="../salir.jsp">Cerrar sesiÃ³n</a>
             </div>
           </li>
         </ul>
@@ -101,18 +101,17 @@
   </nav>
   <br>
   <div class="container">
-    <div class="row justify-content-between">
-      <div class="col-2"></div>
-      <div class="col-3">
-        <a href="add.jsp" class="btn btn-primary" style="color: white;">
-          Añadir ontología
-          <i class="fas fa-plus"></i>
-        </a>
-      </div>
+    <div class="row justify-content-end m-0">
+      <a href="add.jsp" class="btn btn-primary" style="color: white;">
+        <i class="fas fa-plus"></i>
+        Nueva ontologÃ­a
+      </a>
     </div>
     <br>
     <div class="row justify-content-between align-items-center">
-      <div class="col-4 ">Ontologías</div>
+      <div class="col-4">
+        <h3>OntologÃ­as</h3>
+      </div>
       <div class="col-4">
         <div class="input-group">
           <div class="input-group-prepend">
@@ -130,7 +129,7 @@
       <thead class="thead-default">
         <tr style="text-align: center;">
           <th>Id</th>
-          <th>Titulo o descripción</th>
+          <th>TÃ­tulo o descripciÃ³n</th>
           <th>Subida por usuario</th>
           <th>Acciones</th>
         <tr>
@@ -172,40 +171,48 @@
             	out.print(ontologia.getUsuario());
             %>
           </td>
-          <td style="text-align: center;">
-            <a href="todos.jsp?id=<%out.print(ontologia.getId());%>" class="btn btn-secondary">
-              <i class="fas fa-folder"></i>
-            </a>
-            <%
-            	if (o == 0) {
-            %>
-            <a href="#eliminar-<%out.print(ontologia.getId());%>" class="btn btn-danger" data-toggle="modal">
-              <i class="fas fa-trash-alt"></i>
-            </a>
-            <div class="modal fade" id="eliminar-<%out.print(ontologia.getId());%>">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title">¿Estás seguro que quieres eliminar esta ontología?</h4>
-                  </div>
-                  <div class="modal-body">
-                    <h5>
-                      Se eliminará la ontología:
-                      <%
-                    	out.print(ontologia.getTitulo());
-                    %>
-                    </h5>
-                  </div>
-                  <div class="modal-footer">
-                    <a href="../EliminarOntologia?id=<%out.print(ontologia.getId());%>" class="btn btn-primary">Eliminar</a>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+          <td>
+            <div class="row justify-content-center">
+              <a href="todos.jsp?id=<%out.print(ontologia.getId());%>" class="btn btn-sm btn-primary" style="margin-right: 8px">
+                <i class="fas fa-folder"></i>
+              </a>
+              <%
+              	if (o == 0) {
+              %>
+              <a href="#eliminar-<%out.print(ontologia.getId());%>" class="btn btn-sm btn-danger" data-toggle="modal">
+                <i class="fas fa-trash-alt"></i>
+              </a>
+              <div class="modal fade" id="eliminar-<%out.print(ontologia.getId());%>">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Â¿EstÃ¡s seguro que quieres eliminar esta ontologÃ­a?</h4>
+                    </div>
+                    <div class="modal-body">
+                      <h5>
+                        Se eliminarÃ¡ la ontologÃ­a:
+                        <%
+                      	out.print(ontologia.getTitulo());
+                      %>
+                      </h5>
+                    </div>
+                    <div class="modal-footer">
+                      <a href="../EliminarOntologia?id=<%out.print(ontologia.getId());%>" class="btn btn-primary">Eliminar</a>
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+                    </div>
                   </div>
                 </div>
               </div>
+              <%
+              	} else {
+              %>
+              <a href="#eliminar-<%out.print(ontologia.getId());%>" class="btn btn-sm btn-danger disabled" data-toggle="modal">
+                <i class="fas fa-trash-alt"></i>
+              </a>
+              <%
+              	}
+              %>
             </div>
-            <%
-            	}
-            %>
           </td>
         </tr>
         <%
@@ -219,11 +226,11 @@
   		if (respuesta != null) {
 
   			if (respuesta.equals("success")) {
-  				out.print("<script>toastr.success('Se eliminó la ontología'); </script> ");
+  				out.print("<script>toastr.success('Se eliminÃ³ la ontologÃ­a'); </script> ");
   			} else if (respuesta.equals("nosuccess")) {
-  				out.print("<script>toastr.error('No se pudo eliminar la ontología'); </script> ");
+  				out.print("<script>toastr.error('No se pudo eliminar la ontologÃ­a'); </script> ");
   			} else if (respuesta.equals("error")) {
-  				out.print("<script>toastr.error('Error al eliminar la ontología'); </script> ");
+  				out.print("<script>toastr.error('Error al eliminar la ontologÃ­a'); </script> ");
   			}
   			request.getSession().setAttribute("respuesta", null);
   		}

@@ -12,12 +12,12 @@
 <%@page import="controllers.Conexion"%>
 <%@page import="controllers.Usuarios"%>
 <%@page import="models.Usuario"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Inicio</title>
+<title>CategorÃ­as</title>
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="js/bootstrap.min.js" rel="stylesheet">
 <link href="./css/mycss.css" rel="stylesheet">
@@ -33,7 +33,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <img src="img/uasLogo.png" class="logo" alt="Logo" style="height: 50px; width: 50px;">
-    <a class="navbar-brand" href="./index.jsp">Ontologías</a>
+    <a class="navbar-brand" href="./index.jsp">OntologÃ­as</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
       </ul>
@@ -41,16 +41,16 @@
         <%
         	if (request.getSession().getAttribute("UsuarioTipo").toString().equals("1")) {
         %>
-        <a class="navbar-brand" href="categorias/categorias.jsp">Categorías</a>
-        <a class="navbar-brand" href="categorias/ramas.jsp">Subcategorías</a>
-        <a class="navbar-brand" href="ontologias/todas.jsp">Ontologías</a>
+        <a class="navbar-brand" href="categorias/categorias.jsp">CategorÃ­as</a>
+        <a class="navbar-brand" href="categorias/ramas.jsp">SubcategorÃ­as</a>
+        <a class="navbar-brand" href="ontologias/todas.jsp">OntologÃ­as</a>
         <a class="navbar-brand" href="usuarios/usuarios.jsp">
           <i class="fas fa-users"></i>
         </a>
         <%
         	}
         %>
-        <a class="navbar-brand" href="ontologias/propias.jsp">Mis Ontologías</a>
+        <a class="navbar-brand" href="ontologias/propias.jsp">Mis OntologÃ­as</a>
         <a class="navbar-brand" href="noti.jsp">
           <i class="fas fa-bell"></i>
         </a>
@@ -83,8 +83,8 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="perfil.jsp">Ver Perfil</a>
-              <a class="dropdown-item" href="cambiar.jsp">Cambiar Contraseña</a>
-              <a class="dropdown-item" href="./salir.jsp">Cerrar sesión</a>
+              <a class="dropdown-item" href="cambiar.jsp">Cambiar ContraseÃ±a</a>
+              <a class="dropdown-item" href="./salir.jsp">Cerrar sesiÃ³n</a>
             </div>
           </li>
         </ul>
@@ -94,15 +94,17 @@
   <div class="container">
     <br> <br>
     <div class="row justify-content-between align-items-center">
-      <div class="col-4 ">Categorías</div>
+      <div class="col-4">
+        <h3>CategorÃ­as</h3>
+      </div>
       <div class="col-4">
         <div class="input-group">
           <div class="input-group-prepend">
-            <div class="input-group-text" id="btnGroupAddon">
+            <div class="input-group-text">
               <i class="fas fa-search"></i>
             </div>
           </div>
-          <input type="text" class="form-control" placeholder="Buscar" id="buscar" aria-label="Buscar" aria-describedby="btnGroupAddon">
+          <input type="text" class="form-control" placeholder="Buscar" id="buscar" aria-label="Buscar">
         </div>
       </div>
     </div>

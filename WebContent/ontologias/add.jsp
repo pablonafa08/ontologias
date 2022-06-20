@@ -14,12 +14,12 @@
 <%@page import="models.Usuario"%>
 <%@page import="java.sql.*"%>
 <%@page import="controllers.Conexion"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Agregar Ontología</title>
+<title>Nueva ontologÃ­a</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../js/bootstrap.min.js" rel="stylesheet">
 <link href="../style.css" rel="stylesheet">
@@ -46,7 +46,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <img src="../img/uasLogo.png" class="logo" alt="Logo" style="height: 50px; width: 50px;">
-    <a class="navbar-brand" href="../index.jsp">Ontologías</a>
+    <a class="navbar-brand" href="../index.jsp">OntologÃ­as</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
       </ul>
@@ -54,16 +54,16 @@
         <%
         	if (request.getSession().getAttribute("UsuarioTipo").toString().equals("1")) {
         %>
-        <a class="navbar-brand" href="../categorias/categorias.jsp">Categorías</a>
-        <a class="navbar-brand" href="../categorias/ramas.jsp">Subcategorías</a>
-        <a class="navbar-brand" href="../ontologias/todas.jsp">Ontologías</a>
+        <a class="navbar-brand" href="../categorias/categorias.jsp">CategorÃ­as</a>
+        <a class="navbar-brand" href="../categorias/ramas.jsp">SubcategorÃ­as</a>
+        <a class="navbar-brand" href="../ontologias/todas.jsp">OntologÃ­as</a>
         <a class="navbar-brand" href="../usuarios/usuarios.jsp">
           <i class="fas fa-users"></i>
         </a>
         <%
         	}
         %>
-        <a class="navbar-brand" href="../ontologias/propias.jsp">Mis Ontologías</a>
+        <a class="navbar-brand" href="../ontologias/propias.jsp">Mis OntologÃ­as</a>
         <a class="navbar-brand" href="../noti.jsp">
           <i class="fas fa-bell"></i>
         </a>
@@ -96,8 +96,8 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="../perfil.jsp">Ver Perfil</a>
-              <a class="dropdown-item" href="../cambiar.jsp">Cambiar Contraseña</a>
-              <a class="dropdown-item" href="../salir.jsp">Cerrar sesión</a>
+              <a class="dropdown-item" href="../cambiar.jsp">Cambiar ContraseÃ±a</a>
+              <a class="dropdown-item" href="../salir.jsp">Cerrar sesiÃ³n</a>
             </div>
           </li>
         </ul>
@@ -108,7 +108,9 @@
     <br>
     <div class="row">
       <div class="col-1 "></div>
-      <div class="col">Añadir ontología</div>
+      <div class="col">
+        <h3>Nueva ontologÃ­a</h3>
+      </div>
       <div class="col-1"></div>
     </div>
     <br>
@@ -120,9 +122,15 @@
             <div class="container">
               <form action="../InsertarOntologia" method="post" enctype="multipart/form-data">
                 <div class="row">
-                  <div class="col-4">Seleccionar categoría</div>
-                  <div class="col-4">Seleccionar rama</div>
-                  <div class="col-4">Añadir titulo o descripción</div>
+                  <div class="col-4">
+                    <label style="font-weight: 600">Seleccionar categorÃ­a</label>
+                  </div>
+                  <div class="col-4">
+                    <label style="font-weight: 600">Seleccionar rama</label>
+                  </div>
+                  <div class="col-4">
+                    <label style="font-weight: 600">Agregar tÃ­tulo o descripciÃ³n</label>
+                  </div>
                 </div>
                 <div class="row">
                   <div class="col-4">
@@ -188,7 +196,7 @@
                     </select>
                   </div>
                   <div class="col-4">
-                    <input type="text" class="form-control" placeholder="Título" name="titulo">
+                    <input type="text" class="form-control" placeholder="TÃ­tulo" name="titulo">
                   </div>
                 </div>
                 <div class="row">
@@ -206,9 +214,9 @@
                       <svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17">
 												<path
                           d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
-                      <span class="iborrainputfile">Seleccionar Ontología</span>
+                      <span class="iborrainputfile">Seleccionar OntologÃ­a</span>
                     </label>
-                    <br>
+                    <br> <br>
                     <button type="submit" class="btn btn-primary">
                       <i class="fas fa-plus"></i>
                       Agregar
@@ -228,21 +236,21 @@
   		if (respuesta != null) {
 
   			if (respuesta.equals("success")) {
-  				out.print("<script>toastr.success('Se insertó la ontología'); </script> ");
+  				out.print("<script>toastr.success('Se insertÃ³ la ontologÃ­a'); </script> ");
   			} else if (respuesta.equals("nosuccess")) {
   				out.print("<script>toastr.error('No se pudo insertar'); </script> ");
   			} else if (respuesta.equals("error")) {
   				out.print("<script>toastr.error('Error al insertar'); </script> ");
   			} else if (respuesta.equals("error_notcategoria")) {
-  				out.print("<script>toastr.error('Selecciona una categoría'); </script> ");
+  				out.print("<script>toastr.error('Selecciona una categorÃ­a'); </script> ");
   			} else if (respuesta.equals("error_notsubcat")) {
-  				out.print("<script>toastr.error('Selecciona una subcategoría'); </script> ");
+  				out.print("<script>toastr.error('Selecciona una subcategorÃ­a'); </script> ");
   			} else if (respuesta.equals("error_nottitulo")) {
-  				out.print("<script>toastr.error('Ingresa el título de la ontología'); </script> ");
+  				out.print("<script>toastr.error('Ingresa el tÃ­tulo de la ontologÃ­a'); </script> ");
   			} else if (respuesta.equals("error_notfile")) {
-  				out.print("<script>toastr.error('Selecciona una ontología'); </script> ");
+  				out.print("<script>toastr.error('Selecciona una ontologÃ­a'); </script> ");
   			} else if (respuesta.equals("error_notfileextension")) {
-  				out.print("<script>toastr.error('Extensión del archivo no válida'); </script> ");
+  				out.print("<script>toastr.error('ExtensiÃ³n del archivo no vÃ¡lida'); </script> ");
   			}
   			request.getSession().setAttribute("respuesta", null);
   		}

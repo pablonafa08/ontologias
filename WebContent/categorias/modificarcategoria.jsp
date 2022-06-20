@@ -20,7 +20,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Modificar Categoría</title>
+<title>Editar categoría</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../js/bootstrap.min.js" rel="stylesheet">
 <link href="../css/mycss.css" rel="stylesheet">
@@ -90,8 +90,15 @@
       </form>
     </div>
   </nav>
-  <br>
   <div class="container">
+    <br>
+    <div class="row">
+      <div class="col-1 "></div>
+      <div class="col">
+        <h3>Editar categoría</h3>
+      </div>
+      <div class="col-1"></div>
+    </div>
     <br>
     <div class="row">
       <div class="col-1"></div>
@@ -109,11 +116,11 @@
                 <div class="col-7">
                   <input type="hidden" class="form-control" name="id" value="<%out.print(categoria.getId());%>">
                   <div class="form-group">
-                    <label for="">Añadir Título</label>
+                    <label style="font-weight: 600">Agregar título</label>
                     <input type="text" class="form-control" placeholder="Título" name="titulo" value="<%out.print(categoria.getTitulo());%>">
                   </div>
                   <div class="form-group">
-                    <label for="">Añadir Imágen</label>
+                    <label style="font-weight: 600">Agregar imágen</label>
                     <br>
                     <input type="file" name="file-1" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} archivos seleccionados" multiple />
                     <label for="file-1">
@@ -138,7 +145,7 @@
                   	}
                   %>
                   <div class="form-group">
-                    <label for="">Eliminar Foto</label>
+                    <label style="font-weight: 600">Eliminar Foto</label>
                     <input type="checkbox" class="" name="eliminar_foto" id="eliminar_foto">
                   </div>
                 </div>

@@ -15,12 +15,12 @@
 <%@page import="models.Usuario"%>
 <%@page import="java.sql.*"%>
 <%@page import="controllers.Conexion"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Agregar Subcategoria</title>
+<title>Nueva subcategorÃ­a</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../js/bootstrap.min.js" rel="stylesheet">
 <link href="../style.css" rel="stylesheet">
@@ -40,18 +40,18 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <img src="../img/uasLogo.png" class="logo" alt="Logo" style="height: 50px; width: 50px;">
-    <a class="navbar-brand" href="../index.jsp">Ontologías</a>
+    <a class="navbar-brand" href="../index.jsp">OntologÃ­as</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
       </ul>
       <form class="form-inline my-2 my-lg-0">
-        <a class="navbar-brand" href="../categorias/categorias.jsp">Categorías</a>
-        <a class="navbar-brand" href="../categorias/ramas.jsp">Subcategorías</a>
-        <a class="navbar-brand" href="../ontologias/todas.jsp">Ontologías</a>
+        <a class="navbar-brand" href="../categorias/categorias.jsp">CategorÃ­as</a>
+        <a class="navbar-brand" href="../categorias/ramas.jsp">SubcategorÃ­as</a>
+        <a class="navbar-brand" href="../ontologias/todas.jsp">OntologÃ­as</a>
         <a class="navbar-brand" href="../usuarios/add.jsp">
           <i class="fas fa-users"></i>
         </a>
-        <a class="navbar-brand" href="../ontologias/propias.jsp">Mis Ontologías</a>
+        <a class="navbar-brand" href="../ontologias/propias.jsp">Mis OntologÃ­as</a>
         <a class="navbar-brand" href="../noti.jsp">
           <i class="fas fa-bell"></i>
         </a>
@@ -82,8 +82,8 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="../perfil.jsp">Ver Perfil</a>
-              <a class="dropdown-item" href="../cambiar.jsp">Cambiar Contraseña</a>
-              <a class="dropdown-item" href="../salir.jsp">Cerrar sesión</a>
+              <a class="dropdown-item" href="../cambiar.jsp">Cambiar ContraseÃ±a</a>
+              <a class="dropdown-item" href="../salir.jsp">Cerrar sesiÃ³n</a>
             </div>
           </li>
         </ul>
@@ -93,13 +93,21 @@
   <div class="container">
     <br>
     <div class="row">
+      <div class="col-1 "></div>
+      <div class="col">
+        <h3>Nueva subcategorÃ­a</h3>
+      </div>
+      <div class="col-1"></div>
+    </div>
+    <br>
+    <div class="row">
       <div class="col-1"></div>
       <div class="col align-self-center">
         <div class="card" style="box-shadow: -4px 5px rgb(237, 234, 245, 0.5);">
           <div class="card-body align-self-center">
             <form action="../InsertarSubCategoria" method="post" enctype="multipart/form-data">
               <div class="form-group">
-                <label for="">Categorias</label>
+                <label style="font-weight: 600">Seleccionar categorÃ­a</label>
                 <select class="form-control" name="categoria">
                   <%
                   	Conexion cn = new Conexion();
@@ -144,18 +152,18 @@
                 </select>
               </div>
               <div class="form-group">
-                <label for="">Añadir Título</label>
-                <input type="text" class="form-control" placeholder="Título" name="titulo">
+                <label style="font-weight: 600">Agregar tÃ­tulo</label>
+                <input type="text" class="form-control" placeholder="TÃ­tulo" name="titulo">
               </div>
               <div class="form-group">
-                <label for="">Añadir Imágen</label>
+                <label style="font-weight: 600">Agregar imÃ¡gen</label>
                 <br>
                 <input type="file" name="file-1" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} archivos seleccionados" multiple />
                 <label for="file-1">
                   <svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17">
 										<path
                       d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
-                  <span class="iborrainputfile">Seleccionar imágen</span>
+                  <span class="iborrainputfile">Seleccionar imÃ¡gen</span>
                 </label>
               </div>
               <button type="submit" class="btn btn-primary">
@@ -174,15 +182,15 @@
   		if (respuesta != null) {
 
   			if (respuesta.equals("success")) {
-  				out.print("<script>toastr.success('Se insertó la subcategoría'); </script> ");
+  				out.print("<script>toastr.success('Se insertÃ³ la subcategorÃ­a'); </script> ");
   			} else if (respuesta.equals("nosuccess")) {
   				out.print("<script>toastr.error('No se pudo insertar'); </script> ");
   			} else if (respuesta.equals("error")) {
   				out.print("<script>toastr.error('Error al insertar'); </script> ");
   			} else if (respuesta.equals("error_nottitulo")) {
-  				out.print("<script>toastr.error('Ingrese el título de la subcategoría'); </script> ");
+  				out.print("<script>toastr.error('Ingrese el tÃ­tulo de la subcategorÃ­a'); </script> ");
   			} else if (respuesta.equals("error_notcategoria")) {
-  				out.print("<script>toastr.error('Seleccione una categoría'); </script> ");
+  				out.print("<script>toastr.error('Seleccione una categorÃ­a'); </script> ");
   			}
   			request.getSession().setAttribute("respuesta", null);
   		}

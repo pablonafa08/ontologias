@@ -18,7 +18,7 @@ const endTable = `</tbody>
 const editButton = (name, isDisabled) => {
   const disabledLabel = isDisabled ? "disabled" : "";
 
-  return `<a href="#modificar-${name}" class="btn btn-sm btn-secondary ${disabledLabel}" style="margin-right: 8px" data-toggle="modal">
+  return `<a href="#modificar-${name}" class="btn btn-sm btn-primary ${disabledLabel}" style="margin-right: 8px" data-toggle="modal">
   <i class="fas fa-pencil-alt"></i>
   </a>`;
 };
@@ -143,7 +143,7 @@ function loadTable() {
           <td>${item.name}</td>
           <td>${attributes.join(" ")}</td>
           <td>${relations.join(" ")}</td>
-          <td style="display: flex">${editButton(
+          <td><div class="row justify-content-center">${editButton(
             item.name,
             item.actions.isEditDisabled
           )}
@@ -160,6 +160,7 @@ function loadTable() {
               : ""
           }
           ${!isDeleteDisabled ? deleteModal(item.name) : ""}
+          <div>
           </td>
           </tr>
           `;

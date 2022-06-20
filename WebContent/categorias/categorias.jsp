@@ -93,22 +93,21 @@
   </nav>
   <br>
   <div class="container">
-    <div class="row justify-content-between">
-      <div class="col-2"></div>
-      <div class="row">
-        <a href="add.jsp" class="btn btn-primary" style="color: white; margin-right: 10px;">
-          Añadir categoría
-          <i class="fas fa-plus"></i>
-        </a>
-        <a href="addramas.jsp" class="btn btn-primary" style="color: white;">
-          Añadir Subcategoría
-          <i class="fas fa-plus"></i>
-        </a>
-      </div>
+    <div class="row justify-content-end m-0">
+      <a href="add.jsp" class="btn btn-primary" style="color: white; margin-right: 10px;">
+        <i class="fas fa-plus"></i>
+        Nueva categoría
+      </a>
+      <a href="addramas.jsp" class="btn btn-primary" style="color: white;">
+        <i class="fas fa-plus"></i>
+        Nueva subcategoría
+      </a>
     </div>
     <br>
     <div class="row justify-content-between align-items-center">
-      <div class="col-4 ">Categorías</div>
+      <div class="col-4">
+        <h3>Categorías</h3>
+      </div>
       <div class="col-4">
         <div class="input-group">
           <div class="input-group-prepend">
@@ -177,54 +176,26 @@
             	out.print(ramas);
             %>
           </td>
-          <td style="text-align: center;">
-            <a href="modificarcategoria.jsp?id=<%out.print(categoria.getId());%>" class="btn btn-secondary">
-              <i class="fas fa-pencil-alt"></i>
-            </a>
-            <%
-            	if (ramas == 0) {
-            %>
-            <a href="#eliminar-<%out.print(categoria.getId());%>" class="btn btn-danger" data-toggle="modal">
-              <i class="fas fa-trash-alt"></i>
-            </a>
-            <%
-            	}
-            %>
-            <!-- Modificar -->
-            <div class="modal fade" id="modificar-<%out.print(categoria.getId());%>">
-              <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title">
-                      Modificar Categoría
-                      <%
-                    	out.print(categoria.getTitulo());
-                    %>
-                    </h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="form-group">
-                      <label for="">Añadir Título</label>
-                      <input type="text" class="form-control" placeholder="Título" name="titulo" value="<%out.print(categoria.getTitulo());%>">
-                    </div>
-                    <div class="form-group">
-                      <label for="">Añadir Imágen</label>
-                      <br>
-                      <input type="file" name="file-1" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} archivos seleccionados" multiple />
-                      <label for="file-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="iborrainputfile" width="20" height="17" viewBox="0 0 20 17">
-													<path
-                            d="M10 0l-5.2 4.9h3.3v5.1h3.8v-5.1h3.3l-5.2-4.9zm9.3 11.5l-3.2-2.1h-2l3.4 2.6h-3.5c-.1 0-.2.1-.2.1l-.8 2.3h-6l-.8-2.2c-.1-.1-.1-.2-.2-.2h-3.6l3.4-2.6h-2l-3.2 2.1c-.4.3-.7 1-.6 1.5l.6 3.1c.1.5.7.9 1.2.9h16.3c.6 0 1.1-.4 1.3-.9l.6-3.1c.1-.5-.2-1.2-.7-1.5z"></path></svg>
-                        <span class="iborrainputfile">Seleccionar imágen</span>
-                      </label>
-                    </div>
-                  </div>
-                  <div class="modal-footer">
-                    <button type="button" name="guardar" id="guardar" class="btn btn-primary">Guardar Cambios</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                  </div>
-                </div>
-              </div>
+          <td>
+            <div class="row justify-content-center">
+              <a href="modificarcategoria.jsp?id=<%out.print(categoria.getId());%>" class="btn btn-sm btn-primary" style="margin-right: 8px">
+                <i class="fas fa-pencil-alt"></i>
+              </a>
+              <%
+              	if (ramas == 0) {
+              %>
+              <a href="#eliminar-<%out.print(categoria.getId());%>" class="btn btn-sm btn-danger" data-toggle="modal">
+                <i class="fas fa-trash-alt"></i>
+              </a>
+              <%
+              	} else {
+              %>
+              <a href="#eliminar-<%out.print(categoria.getId());%>" class="btn btn-sm btn-danger disabled" data-toggle="modal">
+                <i class="fas fa-trash-alt"></i>
+              </a>
+              <%
+              	}
+              %>
             </div>
             <!-- Eliminar -->
             <div class="modal fade" id="eliminar-<%out.print(categoria.getId());%>">
@@ -278,39 +249,6 @@
   			request.getSession().setAttribute("respuesta", null);
   		}
   %>
-  <script>
-			var inputs = document.querySelectorAll('.inputfile');
-			Array.prototype.forEach
-					.call(
-							inputs,
-							function(input) {
-								var label = input.nextElementSibling, labelVal = label.innerHTML;
-
-								input
-										.addEventListener(
-												'change',
-												function(e) {
-													var fileName = '';
-													if (this.files
-															&& this.files.length > 1)
-														fileName = (this
-																.getAttribute('data-multiple-caption') || '')
-																.replace(
-																		'{count}',
-																		this.files.length);
-													else
-														fileName = e.target.value
-																.split("\\")
-																.pop();
-
-													if (fileName)
-														label
-																.querySelector('span').innerHTML = fileName;
-													else
-														label.innerHTML = labelVal;
-												});
-							});
-		</script>
 </body>
 </html>
 <%

@@ -23,7 +23,6 @@
 <title>Subcategorías</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../js/bootstrap.min.js" rel="stylesheet">
-<!--link href="../css/mycss.css" rel="stylesheet"-->
 <link href="../style.css" rel="stylesheet">
 <script src="../js/popper.min.js"></script>
 <script src="../js/jquery-3.3.1.slim.min.js"></script>
@@ -94,22 +93,21 @@
   </nav>
   <br>
   <div class="container">
-    <div class="row justify-content-between">
-      <div class="col-2"></div>
-      <div class="row">
-        <a href="add.jsp" class="btn btn-primary" style="color: white; margin-right: 10px;">
-          Añadir categoría
-          <i class="fas fa-plus"></i>
-        </a>
-        <a href="addramas.jsp" class="btn btn-primary" style="color: white;">
-          Añadir Subcategoría
-          <i class="fas fa-plus"></i>
-        </a>
-      </div>
+    <div class="row justify-content-end m-0">
+      <a href="add.jsp" class="btn btn-primary" style="color: white; margin-right: 10px;">
+        <i class="fas fa-plus"></i>
+        Nueva categoría
+      </a>
+      <a href="addramas.jsp" class="btn btn-primary" style="color: white;">
+        <i class="fas fa-plus"></i>
+        Nueva subcategoría
+      </a>
     </div>
     <br>
     <div class="row justify-content-between align-items-center">
-      <div class="col-4 ">Subcategorías</div>
+      <div class="col-4">
+        <h3>Subcategorías</h3>
+      </div>
       <div class="col-4">
         <div class="input-group">
           <div class="input-group-prepend">
@@ -166,26 +164,34 @@
             	out.print(ontologias);
             %>
           </td>
-          <td style="text-align: center;">
-            <a href="modificarsubcategoria.jsp?id=<%out.print(subcategoria.getId());%>" class="btn btn-secondary">
-              <i class="fas fa-pencil-alt"></i>
-            </a>
-            <%
-            	if (ontologias == 0) {
-            %>
-            <a href="#eliminar-<%out.print(subcategoria.getId());%>" class="btn btn-danger" data-toggle="modal">
-              <i class="fas fa-trash-alt"></i>
-            </a>
-            <%
-            	}
-            %>
+          <td>
+            <div class="row justify-content-center">
+              <a href="modificarsubcategoria.jsp?id=<%out.print(subcategoria.getId());%>" class="btn btn-sm btn-primary" style="margin-right: 8px">
+                <i class="fas fa-pencil-alt"></i>
+              </a>
+              <%
+              	if (ontologias == 0) {
+              %>
+              <a href="#eliminar-<%out.print(subcategoria.getId());%>" class="btn btn-sm btn-danger" data-toggle="modal">
+                <i class="fas fa-trash-alt"></i>
+              </a>
+              <%
+              	} else {
+              %>
+              <a href="#eliminar-<%out.print(subcategoria.getId());%>" class="btn btn-sm btn-danger disabled" data-toggle="modal">
+                <i class="fas fa-trash-alt"></i>
+              </a>
+              <%
+              	}
+              %>
+            </div>
             <!-- Modificar -->
             <div class="modal fade" id="modificar-<%out.print(subcategoria.getId());%>">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
                     <h4 class="modal-title">
-                      Modificar Subcategoría
+                      Modificar subcategoría
                       <%
                     	out.print(subcategoria.getTitulo());
                     %>
@@ -193,11 +199,11 @@
                   </div>
                   <div class="modal-body">
                     <div class="form-group">
-                      <label for="">Añadir Título</label>
+                      <label for="">Agregar título</label>
                       <input type="text" class="form-control" placeholder="Título" name="titulo" value="<%out.print(subcategoria.getTitulo());%>">
                     </div>
                     <div class="form-group">
-                      <label for="">Añadir Imágen</label>
+                      <label for="">Agregar imágen</label>
                       <br>
                       <input type="file" name="file-1" id="file-1" class="inputfile inputfile-1" data-multiple-caption="{count} archivos seleccionados" multiple />
                       <label for="file-1">

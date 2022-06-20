@@ -96,18 +96,17 @@
   </nav>
   <br>
   <div class="container">
-    <div class="row justify-content-between">
-      <div class="col-2"></div>
-      <div class="col-3">
-        <a href="add.jsp" class="btn btn-primary" style="color: white;">
-          Añadir ontología
-          <i class="fas fa-plus"></i>
-        </a>
-      </div>
+    <div class="row justify-content-end m-0">
+      <a href="add.jsp" class="btn btn-primary" style="color: white;">
+        <i class="fas fa-plus"></i>
+        Nueva ontología
+      </a>
     </div>
     <br>
     <div class="row justify-content-between align-items-center">
-      <div class="col-4 ">Ontologías</div>
+      <div class="col-4">
+        <h3>Ontologías</h3>
+      </div>
       <div class="col-4">
         <div class="input-group">
           <div class="input-group-prepend">
@@ -158,7 +157,7 @@
               %>
             </td>
             <td style="text-align: center;">
-              <a href="todos.jsp?id=<%out.print(ontologia.getId());%>" class="btn btn-secondary">
+              <a href="todos.jsp?id=<%out.print(ontologia.getId());%>" class="btn btn-sm btn-primary">
                 <i class="fas fa-folder"></i>
               </a>
             </td>

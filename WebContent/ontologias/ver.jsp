@@ -12,12 +12,12 @@
 <%@page import="models.Usuario"%>
 <%@page import="models.Utils"%>
 <%@page import="java.util.ArrayList"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Clases</title>
+<title>Seleccionar clase</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../js/bootstrap.min.js" rel="stylesheet">
 <link href="../style.css" rel="stylesheet">
@@ -32,7 +32,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <img src="../img/uasLogo.png" class="logo" alt="Logo" style="height: 50px; width: 50px;">
-    <a class="navbar-brand" href="../index.jsp">Ontologías</a>
+    <a class="navbar-brand" href="../index.jsp">OntologÃ­as</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
       </ul>
@@ -40,16 +40,16 @@
         <%
         	if (request.getSession().getAttribute("UsuarioTipo").toString().equals("1")) {
         %>
-        <a class="navbar-brand" href="../categorias/categorias.jsp">Categorías</a>
-        <a class="navbar-brand" href="../categorias/ramas.jsp">Subcategorías</a>
-        <a class="navbar-brand" href="../ontologias/todas.jsp">Ontologías</a>
+        <a class="navbar-brand" href="../categorias/categorias.jsp">CategorÃ­as</a>
+        <a class="navbar-brand" href="../categorias/ramas.jsp">SubcategorÃ­as</a>
+        <a class="navbar-brand" href="../ontologias/todas.jsp">OntologÃ­as</a>
         <a class="navbar-brand" href="../usuarios/usuarios.jsp">
           <i class="fas fa-users"></i>
         </a>
         <%
         	}
         %>
-        <a class="navbar-brand" href="../ontologias/propias.jsp">Mis Ontologías</a>
+        <a class="navbar-brand" href="../ontologias/propias.jsp">Mis OntologÃ­as</a>
         <a class="navbar-brand" href="../noti.jsp">
           <i class="fas fa-bell"></i>
         </a>
@@ -82,46 +82,64 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="../perfil.jsp">Ver Perfil</a>
-              <a class="dropdown-item" href="../cambiar.jsp">Cambiar Contraseña</a>
-              <a class="dropdown-item" href="../salir.jsp">Cerrar sesión</a>
+              <a class="dropdown-item" href="../cambiar.jsp">Cambiar ContraseÃ±a</a>
+              <a class="dropdown-item" href="../salir.jsp">Cerrar sesiÃ³n</a>
             </div>
           </li>
         </ul>
       </form>
     </div>
   </nav>
-  <center>
-    <h2>Clases</h2>
-    <div class="col-6">
-      <form action="../MostrarCampos" method="post" class="form-group">
-        <%
-        	Utils utils = new Utils();
-        		String nombre = request.getSession().getAttribute("ruta").toString();
-        		String ruta = utils.getRuta() + nombre;
-        		ClasesLectura clases = new ClasesLectura();
-        		String clasess[] = clases.leerClase(ruta);
-        		for (String clase : clasess) {
-        %>
-        <button class="btn btn-block btn-primary" type="input" name="clase" value="<%out.print(clase);%>">
-          <%
-          	out.print(clase);
-          %>
-        </button>
-        <%
-        	}
-        %>
-      </form>
-    </div>
-  </center>
+  <br>
   <div class="container">
-    <%
-    	String id_ontologia = request.getSession().getAttribute("id_ontologia").toString();
-    %>
-    <a href="todos.jsp?id=<%out.print(id_ontologia);%>" class="btn btn-primary" style="color: white;">
-      <i class="fas fa-search"></i>
-      Consultar
-    </a>
-    <br> <br>
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col">
+        <h3>Seleccionar clase</h3>
+      </div>
+      <div class="col-1"></div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-2">
+        <%
+        	String id_ontologia = request.getSession().getAttribute("id_ontologia").toString();
+        %>
+        <a href="todos.jsp?id=<%out.print(id_ontologia);%>" class="btn btn-primary" style="color: white;">
+          <i class="fas fa-search"></i>
+          Consultar datos de la ontologÃ­a
+        </a>
+      </div>
+      <div class="col">
+        <div class="card" style="box-shadow: -4px 5px rgb(237, 234, 245, 0.5);">
+          <div class="card-body">
+            <form action="../MostrarCampos" method="post" class="form-group">
+              <div class="row">
+                <%
+                	Utils utils = new Utils();
+                		String nombre = request.getSession().getAttribute("ruta").toString();
+                		String ruta = utils.getRuta() + nombre;
+                		ClasesLectura clases = new ClasesLectura();
+                		String clasess[] = clases.leerClase(ruta);
+                		for (String clase : clasess) {
+                %>
+                <div class="col-6 my-1">
+                  <button class="btn btn-block btn-primary" type="input" name="clase" value="<%out.print(clase);%>">
+                    <%
+                    	out.print(clase);
+                    %>
+                  </button>
+                </div>
+                <%
+                	}
+                %>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-1"></div>
+    </div>
   </div>
 </body>
 </html>

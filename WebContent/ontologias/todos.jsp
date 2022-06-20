@@ -22,12 +22,12 @@
 <%@page import="models.IndividuosTodos"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="org.apache.commons.lang3.ArrayUtils"%>
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Consultar</title>
+<title>Datos de la ontologÃ­a</title>
 <link href="../css/bootstrap.min.css" rel="stylesheet">
 <link href="../js/bootstrap.min.js" rel="stylesheet">
 <link href="../style.css" rel="stylesheet">
@@ -48,7 +48,7 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <img src="../img/uasLogo.png" class="logo" alt="Logo" style="height: 50px; width: 50px;">
-    <a class="navbar-brand" href="../index.jsp">Ontologías</a>
+    <a class="navbar-brand" href="../index.jsp">OntologÃ­as</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
       </ul>
@@ -56,16 +56,16 @@
         <%
         	if (request.getSession().getAttribute("UsuarioTipo").toString().equals("1")) {
         %>
-        <a class="navbar-brand" href="../categorias/categorias.jsp">Categorías</a>
-        <a class="navbar-brand" href="../categorias/ramas.jsp">Subcategorías</a>
-        <a class="navbar-brand" href="../ontologias/todas.jsp">Ontologías</a>
+        <a class="navbar-brand" href="../categorias/categorias.jsp">CategorÃ­as</a>
+        <a class="navbar-brand" href="../categorias/ramas.jsp">SubcategorÃ­as</a>
+        <a class="navbar-brand" href="../ontologias/todas.jsp">OntologÃ­as</a>
         <a class="navbar-brand" href="../usuarios/usuarios.jsp">
           <i class="fas fa-users"></i>
         </a>
         <%
         	}
         %>
-        <a class="navbar-brand" href="../ontologias/propias.jsp">Mis Ontologías</a>
+        <a class="navbar-brand" href="../ontologias/propias.jsp">Mis OntologÃ­as</a>
         <a class="navbar-brand" href="../noti.jsp">
           <i class="fas fa-bell"></i>
         </a>
@@ -96,41 +96,38 @@
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
               <a class="dropdown-item" href="../perfil.jsp">Ver Perfil</a>
-              <a class="dropdown-item" href="../cambiar.jsp">Cambiar Contraseña</a>
-              <a class="dropdown-item" href="../salir.jsp">Cerrar sesión</a>
+              <a class="dropdown-item" href="../cambiar.jsp">Cambiar ContraseÃ±a</a>
+              <a class="dropdown-item" href="../salir.jsp">Cerrar sesiÃ³n</a>
             </div>
           </li>
         </ul>
       </form>
     </div>
   </nav>
+  <br>
   <div class="container">
-    <br>
-    <div class="row justify-content-between">
-      <div class="col-3">
-        <%
-        	String id_subcategoria = (String) session.getAttribute("id_subcategoria");
-        		if (id_subcategoria != null) {
-        %>
-        <a href="ontologias.jsp?id=<%out.print(id_subcategoria);%>" class="btn btn-primary" style="color: white;">
-          <i class="fas fa-mouse-pointer"></i>
-          Seleccionar Ontologia
-        </a>
-        <br> <br>
-        <%
-        	}
-        %>
-      </div>
-      <div class="col-3">
-        <a href="ver.jsp" class="btn btn-primary" style="color: white;">
-          Añadir individuo
-          <i class="fas fa-plus"></i>
-        </a>
-      </div>
+    <div class="row justify-content-between m-0">
+      <%
+      	String id_subcategoria = (String) session.getAttribute("id_subcategoria");
+      		if (id_subcategoria != null) {
+      %>
+      <a href="ontologias.jsp?id=<%out.print(id_subcategoria);%>" class="btn btn-primary" style="color: white;">
+        <i class="fas fa-mouse-pointer"></i>
+        Seleccionar ontologÃ­a
+      </a>
+      <%
+      	}
+      %>
+      <a href="ver.jsp" class="btn btn-primary" style="color: white;">
+        <i class="fas fa-plus"></i>
+        Nuevo individuo
+      </a>
     </div>
     <br>
     <div class="row justify-content-between align-items-center">
-      <div class="col-4 "></div>
+      <div class="col-4">
+        <h3>Datos de la ontologÃ­a</h3>
+      </div>
       <div class="col-4">
         <div class="input-group">
           <div class="input-group-prepend">
@@ -156,21 +153,21 @@
 
   		if (respuesta != null) {
   			if (respuesta.equals("success_i")) {
-  				out.print("<script>toastr.success('Se insertï¿½ el individuo'); </script> ");
+  				out.print("<script>toastr.success('Se insertÃ³ el individuo'); </script> ");
   			} else if (respuesta.equals("success_e")) {
   				out.print(
-  						"<script>toastr.success('Se ha puesto en pendiente para su eliminaciï¿½n'); </script> ");
+  						"<script>toastr.success('Se ha puesto en pendiente para su eliminaciÃ³n'); </script> ");
   			} else if (respuesta.equals("nosuccess_e")) {
   				out.print(
-  						"<script>toastr.error('No se pudo pudo poner en pendiente para su eliminaciï¿½n'); </script> ");
+  						"<script>toastr.error('No se pudo pudo poner en pendiente para su eliminaciÃ³n'); </script> ");
   			} else if (respuesta.equals("error_e")) {
   				out.print("<script>toastr.error('Error al cambiar estatus'); </script> ");
   			} else if (respuesta.equals("success_m")) {
   				out.print(
-  						"<script>toastr.success('Se ha puesto en pendiente para su modificaciï¿½n'); </script> ");
+  						"<script>toastr.success('Se ha puesto en pendiente para su modificaciÃ³n'); </script> ");
   			} else if (respuesta.equals("nosuccess_m")) {
   				out.print(
-  						"<script>toastr.error('No se pudo pudo poner en pendiente para su modificaciï¿½n'); </script> ");
+  						"<script>toastr.error('No se pudo pudo poner en pendiente para su modificaciÃ³n'); </script> ");
   			} else if (respuesta.equals("error_m")) {
   				out.print("<script>toastr.error('Error al cambiar estatus'); </script> ");
   			}

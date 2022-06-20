@@ -93,7 +93,6 @@ public class ClasesLectura {
 			ObjectProperty objecto = (ObjectProperty) iteratorObjecto.next();
 
 			if (objecto.getLocalName().equals(relacion)) {
-				System.out.println("Rango: --- " + objecto.getRange().getLocalName());
 				rango = objecto.getRange().getLocalName();
 				break;
 			}
