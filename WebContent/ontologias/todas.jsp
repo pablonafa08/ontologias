@@ -185,16 +185,16 @@
               <div class="modal fade" id="eliminar-<%out.print(ontologia.getId());%>">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
-                    <div class="modal-header">
-                      <h4 class="modal-title">¿Estás seguro que quieres eliminar esta ontología?</h4>
+                    <div class="modal-header justify-content-center" style="text-align: center">
+                      <h5 class="modal-title">¿Estás seguro que quieres eliminar?</h5>
                     </div>
                     <div class="modal-body">
-                      <h5>
-                        Se eliminará la ontología:
-                        <%
-                      	out.print(ontologia.getTitulo());
-                      %>
-                      </h5>
+                      <p style="text-align: center">
+                        Se eliminará la ontología: <b> <%
+ 	out.print(ontologia.getTitulo());
+ %>
+                        </b>
+                      </p>
                     </div>
                     <div class="modal-footer">
                       <a href="../EliminarOntologia?id=<%out.print(ontologia.getId());%>" class="btn btn-primary">Eliminar</a>
@@ -224,7 +224,6 @@
   <%
   	String respuesta = (String) session.getAttribute("respuesta");
   		if (respuesta != null) {
-
   			if (respuesta.equals("success")) {
   				out.print("<script>toastr.success('Se eliminó la ontología'); </script> ");
   			} else if (respuesta.equals("nosuccess")) {

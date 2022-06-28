@@ -25,8 +25,10 @@ const editButton = (name, isDisabled) => {
 
 const editModal = (name, clase, attributes, relationItems, relationsValue) => {
   const attributesInput = Object.keys(attributes).map((attr) => {
-    return `<label>${attr}</label>
-    <input class="form-control" type="text" value="${attributes[attr]}" name="${attr}">`;
+    return `<div class="form-group">
+    <label style="font-weight: 600">${attr}</label>
+    <input class="form-control" type="text" value="${attributes[attr]}" name="${attr}">
+    </div>`;
   });
 
   const relationsSelect = Object.keys(relationItems).map((relation) => {
@@ -41,19 +43,21 @@ const editModal = (name, clase, attributes, relationItems, relationsValue) => {
         }>${option}</option>`
     );
 
-    return `<label>${relation}</label>
+    return `<div class="form-group">
+    <label style="font-weight: 600">${relation}</label>
     <select class="form-control" name="${relation}">
     ${options.join(" ")}
-    </select>`;
+    </select>
+    </div>`;
   });
 
   return `<div class="modal fade" id="modificar-${name}">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">
-          Modificar Individuo ${name}
-        </h4>
+      <div class="modal-header justify-content-center" style="text-align: center">
+        <h5 class="modal-title">
+           Editar individuo: ${name}
+        </h5>
       </div>
       <form class="form-group" method="post" action="../ModificarAtributos">
         <div class="modal-body">
@@ -62,7 +66,7 @@ const editModal = (name, clase, attributes, relationItems, relationsValue) => {
           ${relationsSelect.join(" ")}
         </div>
         <div class="modal-footer">
-          <button type="submit" name="guardar" id="guardar" class="btn btn-primary">Guardar Cambios</button>
+          <button type="submit" name="guardar" id="guardar" class="btn btn-primary">Guardar</button>
           <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
         </div>
       </form>
@@ -83,13 +87,13 @@ const deleteModal = (name) => {
   return `<div class="modal fade" id="eliminar-${name}">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title">¿Estás seguro que quieres eliminar?</h4>
+      <div class="modal-header justify-content-center" style="text-align: center">
+        <h5 class="modal-title">¿Estás seguro que quieres eliminar?</h5>
       </div>
       <div class="modal-body">
-        <h5>
-          Se eliminará el individuo: ${name}
-        </h5>
+        <p style="text-align: center">
+          Se eliminará el individuo: <b>${name}</b>
+        </p>
       </div>
       <div class="modal-footer">
         <a href="../ModificarAtributos?individuo=${name}" class="btn btn-primary">Eliminar</a>

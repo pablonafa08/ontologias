@@ -177,32 +177,27 @@
               <div class="modal fade" id="modificar-<%out.print(usuario.getId());%>">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
-                    <div class="modal-header">
-                      <h4 class="modal-title">
-                        Modificar Usuario
-                        <%
-                      	out.print(usuario.getNombres());
-                      %>
-                      </h4>
+                    <div class="modal-header justify-content-center" style="text-align: center">
+                      <h5 class="modal-title">Editar usuario</h5>
                     </div>
                     <form action="../ModificarUsuario" method="post">
                       <div class="modal-body">
                         <input type="hidden" class="form-control" name="id_usu" value="<%out.print(usuario.getId());%>">
                         <div class="form-group">
-                          <label for="">Nombre(s)</label>
+                          <label style="font-weight: 600">Nombre(s)</label>
                           <input type="text" class="form-control" placeholder="Nombre(s)" name="nombres" value="<%out.print(usuario.getNombres());%>">
                         </div>
                         <div class="form-group">
-                          <label for="">Apellido Paterno</label>
-                          <input type="text" class="form-control" placeholder="Apellido Paterno" name="app" value="<%out.print(usuario.getApp());%>">
+                          <label style="font-weight: 600">Apellido paterno</label>
+                          <input type="text" class="form-control" placeholder="Apellido paterno" name="app" value="<%out.print(usuario.getApp());%>">
                         </div>
                         <div class="form-group">
-                          <label for="">Apellido Materno</label>
-                          <input type="text" class="form-control" placeholder="Apellido Materno" name="apm" value="<%out.print(usuario.getApm());%>">
+                          <label style="font-weight: 600">Apellido materno</label>
+                          <input type="text" class="form-control" placeholder="Apellido materno" name="apm" value="<%out.print(usuario.getApm());%>">
                         </div>
                       </div>
                       <div class="modal-footer">
-                        <button type="submit" name="guardar" id="guardar" class="btn btn-primary">Guardar Cambios</button>
+                        <button type="submit" name="guardar" id="guardar" class="btn btn-primary">Guardar</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                       </div>
                     </form>
@@ -213,16 +208,16 @@
               <div class="modal fade" id="eliminar-<%out.print(usuario.getId());%>">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
-                    <div class="modal-header">
-                      <h4 class="modal-title">¿Estás seguro que quieres eliminar?</h4>
+                    <div class="modal-header justify-content-center" style="text-align: center">
+                      <h5 class="modal-title">¿Estás seguro que quieres eliminar?</h5>
                     </div>
                     <div class="modal-body">
-                      <h5>
-                        Se eliminará el usuario:
-                        <%
-                      	out.print(usuario.getNombres() + " " + usuario.getApp() + " " + usuario.getApm());
-                      %>
-                      </h5>
+                      <p style="text-align: center">
+                        Se eliminará el usuario: <b> <%
+ 	out.print(usuario.getNombres() + " " + usuario.getApp() + " " + usuario.getApm());
+ %>
+                        </b>
+                      </p>
                     </div>
                     <div class="modal-footer">
                       <a href="../ModificarUsuario?id=<%out.print(usuario.getId());%>" class="btn btn-primary">Eliminar</a>

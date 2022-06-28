@@ -155,19 +155,20 @@
                     <i class="fas fa-times"></i>
                   </a>
                 </div>
+                <!-- Aceptar eliminación de individuo -->
                 <div class="modal fade" id="eliminar-<%out.print(rs.getString("eliminar_individuos.id"));%>">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                      <div class="modal-header">
-                        <h4 class="modal-title">¿Estás seguro que quieres eliminar?</h4>
+                      <div class="modal-header justify-content-center" style="text-align: center">
+                        <h5 class="modal-title">¿Estás seguro que quieres eliminar?</h5>
                       </div>
                       <div class="modal-body">
-                        <h5>
-                          Se eliminará el individuo:
-                          <%
-                        	out.print(rs.getString("individuo"));
-                        %>
-                        </h5>
+                        <p style="text-align: center">
+                          Se eliminará el individuo: <b> <%
+ 	out.print(rs.getString("individuo"));
+ %>
+                          </b>
+                        </p>
                       </div>
                       <div class="modal-footer">
                         <a
@@ -178,19 +179,20 @@
                     </div>
                   </div>
                 </div>
+                <!-- Rechazar eliminación de individuo -->
                 <div class="modal fade" id="rechazar-<%out.print(rs.getString("eliminar_individuos.id"));%>">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                      <div class="modal-header">
-                        <h4 class="modal-title">¿Estás seguro que quieres rechazar?</h4>
+                      <div class="modal-header justify-content-center" style="text-align: center">
+                        <h5 class="modal-title">¿Estás seguro que quieres rechazar?</h5>
                       </div>
                       <div class="modal-body">
-                        <h5>
-                          Se rechazará la eliminación del individuo:
-                          <%
-                        	out.print(rs.getString("individuo"));
-                        %>
-                        </h5>
+                        <p style="text-align: center">
+                          Se rechazará la eliminación del individuo: <b> <%
+ 	out.print(rs.getString("individuo"));
+ %>
+                          </b>
+                        </p>
                       </div>
                       <div class="modal-footer">
                         <a
@@ -256,7 +258,7 @@
               <%
               	
               %>
-              <td style="text-align: center;">
+              <td>
                 <%
                 	int y = 0;
                 			String atributosSplit[] = rs1.getString("atributos").split("¬¬");
@@ -264,17 +266,29 @@
                 			int existe = atributosSplit.length;
                 			if (atributosSplit[existe - 1].substring(0, 1).equals("~")) {
                 				for (y = 0; y < atributosSplit.length - 1; y++) {
-                					out.print(" " + atributosSplit[y] + " ");
+                					if (y % 2 == 0) {
+                						out.print(" <b>" + atributosSplit[y] + ":</b> ");
+                					} else {
+                						out.print(atributosSplit[y]);
+                					}
                 				}
                 			} else {
                 				for (y = 0; y < atributosSplit.length; y++) {
-                					out.print(" " + atributosSplit[y] + " ");
+                					if (y % 2 == 0) {
+                						out.print(" <b>" + atributosSplit[y] + ":</b> ");
+                					} else {
+                						out.print(atributosSplit[y]);
+                					}
                 				}
                 			}
 
                 			String relacionesSplit[] = rs1.getString("atributos").split("~~");
                 			for (y = 1; y < relacionesSplit.length; y++) {
-                				out.print(relacionesSplit[y] + " ");
+                				if (y % 2 == 0) {
+                					out.print(relacionesSplit[y]);
+                				} else {
+                					out.print(" <b>" + relacionesSplit[y] + ":</b> ");
+                				}
                 			}
                 %>
               </td>
@@ -287,56 +301,85 @@
                     <i class="fas fa-times"></i>
                   </a>
                 </div>
+                <!-- Aceptar modificación de individuo -->
                 <div class="modal fade" id="modificar-<%out.print(rs1.getString("modificar_individuos.id"));%>">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                      <div class="modal-header">
-                        <h4 class="modal-title">
-                          Se modificará el individuo:
-                          <%
+                      <div class="modal-header justify-content-center" style="text-align: center">
+                        <h5 class="modal-title">
+                          ¿Estás seguro que quieres modificar el individuo "<%
                         	out.print(rs1.getString("individuo"));
-                        %>
-                        </h4>
+                        %>"?
+                        </h5>
                       </div>
                       <form method="post" action="ModificarAtributosConfirmacion">
                         <div class="modal-body">
-                          <h5>Nuevos datos:</h5>
+                          <h5 style="margin-bottom: 24px">Nuevos datos:</h5>
                           <%
                           	String atributosSplit2[] = rs1.getString("atributos").split("¬¬");
-
                           			if (atributosSplit2[existe - 1].substring(0, 1).equals("~")) {
                           				for (y = 0; y < atributosSplit2.length - 1; y++) {
+                          					if (y % 2 == 0) {
                           %>
-                          <label class="form-control">
+                          <label style="font-weight: 600">
                             <%
-                            	out.print(" " + atributosSplit2[y] + " ");
+                            	out.print(atributosSplit2[y]);
+                            %>
+                          </label>
+                          <%
+                          	} else {
+                          %>
+                          <label class="form-control" style="margin-bottom: 1rem">
+                            <%
+                            	out.print(atributosSplit2[y]);
                             %>
                           </label>
                           <%
                           	}
+                          				}
                           			} else {
                           				for (y = 0; y < atributosSplit2.length; y++) {
+                          					if (y % 2 == 0) {
                           %>
-                          <label class="form-control">
+                          <label style="font-weight: 600">
                             <%
-                            	out.print(" " + atributosSplit2[y] + " ");
+                            	out.print(atributosSplit2[y]);
+                            %>
+                          </label>
+                          <%
+                          	} else {
+                          %>
+                          <label class="form-control" style="margin-bottom: 1rem">
+                            <%
+                            	out.print(atributosSplit2[y]);
                             %>
                           </label>
                           <%
                           	}
+                          				}
                           			}
                           %>
                           <%
                           	String relacionesSplit2[] = rs1.getString("atributos").split("~~");
                           			for (y = 1; y < relacionesSplit2.length; y++) {
+                          				if (y % 2 == 0) {
                           %>
-                          <label class="form-control">
+                          <label class="form-control" style="margin-bottom: 1rem">
                             <%
-                            	out.print(relacionesSplit2[y] + " ");
+                            	out.print(relacionesSplit2[y]);
+                            %>
+                          </label>
+                          <%
+                          	} else {
+                          %>
+                          <label style="font-weight: 600">
+                            <%
+                            	out.print(relacionesSplit2[y]);
                             %>
                           </label>
                           <%
                           	}
+                          			}
                           %>
                           <input type="hidden" name="elid" value="<%out.print(rs1.getString("modificar_individuos.id"));%>">
                         </div>
@@ -348,19 +391,20 @@
                     </div>
                   </div>
                 </div>
+                <!-- Rechazar modificación de individuo -->
                 <div class="modal fade" id="rechazarc-<%out.print(rs1.getString("modificar_individuos.id"));%>">
                   <div class="modal-dialog" role="document">
                     <div class="modal-content">
-                      <div class="modal-header">
-                        <h4 class="modal-title">¿Estás seguro que quieres rechazar?</h4>
+                      <div class="modal-header justify-content-center" style="text-align: center">
+                        <h5 class="modal-title">¿Estás seguro que quieres rechazar?</h5>
                       </div>
                       <div class="modal-body">
-                        <h5>
-                          Se rechazará la modificación del individuo:
-                          <%
-                        	out.print(rs1.getString("individuo"));
-                        %>
-                        </h5>
+                        <p style="text-align: center">
+                          Se rechazará la modificación del individuo: <b> <%
+ 	out.print(rs1.getString("individuo"));
+ %>
+                          </b>
+                        </p>
                       </div>
                       <div class="modal-footer">
                         <a href="ModificarAtributosConfirmacion?id=<%out.print(rs1.getString("modificar_individuos.id"));%>&opcion=modificar" class="btn btn-primary">Rechazar</a>

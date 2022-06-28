@@ -142,7 +142,6 @@
         		long ramas = 0;
         		ArrayList<Categoria> categorias = conexion.listar();
         		for (Categoria categoria : categorias) {
-
         			ResultSet rs = state.executeQuery(
         					"SELECT count(*) as total FROM subcategorias WHERE estatus = 'A' AND id_categoria = "
         							+ categoria.getId());
@@ -201,17 +200,17 @@
             <div class="modal fade" id="eliminar-<%out.print(categoria.getId());%>">
               <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title">¿Estás seguro que quieres eliminar?</h4>
+                  <div class="modal-header justify-content-center" style="text-align: center">
+                    <h5 class="modal-title">¿Estás seguro que quieres eliminar?</h5>
                   </div>
                   <form class="form-group" method="post" action="#">
                     <div class="modal-body">
-                      <h5>
-                        Se eliminará la categoría:
-                        <%
-                      	out.print(categoria.getTitulo());
-                      %>
-                      </h5>
+                      <p style="text-align: center">
+                        Se eliminará la categoría: <b> <%
+ 	out.print(categoria.getTitulo());
+ %>
+                        </b>
+                      </p>
                     </div>
                     <div class="modal-footer">
                       <a href="../ModificarCategoria?id=<%out.print(categoria.getId());%>" class="btn btn-primary">Eliminar</a>
@@ -232,7 +231,6 @@
   <%
   	String respuesta = (String) session.getAttribute("respuesta");
   		if (respuesta != null) {
-
   			if (respuesta.equals("success")) {
   				out.print("<script>toastr.success('Se eliminó la categoría'); </script> ");
   			} else if (respuesta.equals("nosuccess")) {
