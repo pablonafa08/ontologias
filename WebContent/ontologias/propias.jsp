@@ -110,8 +110,8 @@
       </div>
     </div>
     <br>
-    <h3 id="datos3" style="display: none">No se han registrado ontologías</h3>
-    <h3 id="datos2" style="display: none">No se encontraron coincidencias</h3>
+    <h4 id="datos3" style="display: none; text-align: center; margin-top: 30px">No se han registrado ontologías</h4>
+    <h4 id="datos2" style="display: none; text-align: center; margin-top: 30px">No se encontraron coincidencias</h4>
     <table class="table table-hover" id="datos">
       <thead class="thead-default">
         <tr style="text-align: center;">

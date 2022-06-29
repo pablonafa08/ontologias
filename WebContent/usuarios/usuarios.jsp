@@ -116,124 +116,122 @@
       </div>
     </div>
     <br>
-    <div id="tabla_usuarios">
-      <h3 id="datos3" style="display: none">No se han registrado ontologias</h3>
-      <h3 id="datos2" style="display: none">No se encontraron coincidencias</h3>
-      <table class="table table-hover" id="datos">
-        <thead class="thead-default">
-          <tr style="text-align: center;">
-            <th>Nombres</th>
-            <th>Correo</th>
-            <th>Usuario</th>
-            <th>Ontologías subidas</th>
-            <th>Acciones</th>
-          <tr>
-        </thead>
-        <tbody>
-          <%
-          	Conexion cn = new Conexion();
-          		Connection conn = cn.GetConexion();
-          		Statement state = conn.createStatement();
-          		Usuarios conexion = new Usuarios();
-          		ArrayList<Usuario> usuarios = conexion.listar();
-          		for (Usuario usuario : usuarios) {
-          			ResultSet rs = state.executeQuery(
-          					"SELECT count(*) as total FROM ontologias WHERE estatus = 'A' AND id_usuario = "
-          							+ usuario.getId());
-          %>
-          <tr>
-            <td style="text-align: center;">
-              <%
-              	out.print(usuario.getNombres() + " " + usuario.getApp() + " " + usuario.getApm());
-              %>
-            </td>
-            <td style="text-align: center;">
-              <%
-              	out.print(usuario.getCorreo());
-              %>
-            </td>
-            <td style="text-align: center;">
-              <%
-              	out.print(usuario.getUsuario());
-              %>
-            </td>
-            <td style="text-align: center;">
-              <%
-              	while (rs.next()) {
-              				out.print(rs.getObject("total"));
-              			}
-              %>
-            </td>
-            <td>
-              <div class="row justify-content-center">
-                <a href="#modificar-<%out.print(usuario.getId());%>" class="btn btn-sm btn-primary" style="margin-right: 8px" data-toggle="modal">
-                  <i class="fas fa-pencil-alt"></i>
-                </a>
-                <a href="#eliminar-<%out.print(usuario.getId());%>" class="btn btn-sm btn-danger" data-toggle="modal">
-                  <i class="fas fa-trash-alt"></i>
-                </a>
-              </div>
-              <!-- Modificar -->
-              <div class="modal fade" id="modificar-<%out.print(usuario.getId());%>">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header justify-content-center" style="text-align: center">
-                      <h5 class="modal-title">Editar usuario</h5>
-                    </div>
-                    <form action="../ModificarUsuario" method="post">
-                      <div class="modal-body">
-                        <input type="hidden" class="form-control" name="id_usu" value="<%out.print(usuario.getId());%>">
-                        <div class="form-group">
-                          <label style="font-weight: 600">Nombre(s)</label>
-                          <input type="text" class="form-control" placeholder="Nombre(s)" name="nombres" value="<%out.print(usuario.getNombres());%>">
-                        </div>
-                        <div class="form-group">
-                          <label style="font-weight: 600">Apellido paterno</label>
-                          <input type="text" class="form-control" placeholder="Apellido paterno" name="app" value="<%out.print(usuario.getApp());%>">
-                        </div>
-                        <div class="form-group">
-                          <label style="font-weight: 600">Apellido materno</label>
-                          <input type="text" class="form-control" placeholder="Apellido materno" name="apm" value="<%out.print(usuario.getApm());%>">
-                        </div>
-                      </div>
-                      <div class="modal-footer">
-                        <button type="submit" name="guardar" id="guardar" class="btn btn-primary">Guardar</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-                      </div>
-                    </form>
+    <h4 id="datos3" style="display: none; text-align: center; margin-top: 30px">No se han registrado usuarios</h4>
+    <h4 id="datos2" style="display: none; text-align: center; margin-top: 30px">No se encontraron coincidencias</h4>
+    <table class="table table-hover" id="datos">
+      <thead class="thead-default">
+        <tr style="text-align: center;">
+          <th>Nombres</th>
+          <th>Correo</th>
+          <th>Usuario</th>
+          <th>Ontologías subidas</th>
+          <th>Acciones</th>
+        <tr>
+      </thead>
+      <tbody>
+        <%
+        	Conexion cn = new Conexion();
+        		Connection conn = cn.GetConexion();
+        		Statement state = conn.createStatement();
+        		Usuarios conexion = new Usuarios();
+        		ArrayList<Usuario> usuarios = conexion.listar();
+        		for (Usuario usuario : usuarios) {
+        			ResultSet rs = state.executeQuery(
+        					"SELECT count(*) as total FROM ontologias WHERE estatus = 'A' AND id_usuario = "
+        							+ usuario.getId());
+        %>
+        <tr>
+          <td style="text-align: center;">
+            <%
+            	out.print(usuario.getNombres() + " " + usuario.getApp() + " " + usuario.getApm());
+            %>
+          </td>
+          <td style="text-align: center;">
+            <%
+            	out.print(usuario.getCorreo());
+            %>
+          </td>
+          <td style="text-align: center;">
+            <%
+            	out.print(usuario.getUsuario());
+            %>
+          </td>
+          <td style="text-align: center;">
+            <%
+            	while (rs.next()) {
+            				out.print(rs.getObject("total"));
+            			}
+            %>
+          </td>
+          <td>
+            <div class="row justify-content-center">
+              <a href="#modificar-<%out.print(usuario.getId());%>" class="btn btn-sm btn-primary" style="margin-right: 8px" data-toggle="modal">
+                <i class="fas fa-pencil-alt"></i>
+              </a>
+              <a href="#eliminar-<%out.print(usuario.getId());%>" class="btn btn-sm btn-danger" data-toggle="modal">
+                <i class="fas fa-trash-alt"></i>
+              </a>
+            </div>
+            <!-- Modificar -->
+            <div class="modal fade" id="modificar-<%out.print(usuario.getId());%>">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header justify-content-center" style="text-align: center">
+                    <h5 class="modal-title">Editar usuario</h5>
                   </div>
-                </div>
-              </div>
-              <!-- Eliminar -->
-              <div class="modal fade" id="eliminar-<%out.print(usuario.getId());%>">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header justify-content-center" style="text-align: center">
-                      <h5 class="modal-title">¿Estás seguro que quieres eliminar?</h5>
-                    </div>
+                  <form action="../ModificarUsuario" method="post">
                     <div class="modal-body">
-                      <p style="text-align: center">
-                        Se eliminará el usuario: <b> <%
- 	out.print(usuario.getNombres() + " " + usuario.getApp() + " " + usuario.getApm());
- %>
-                        </b>
-                      </p>
+                      <input type="hidden" class="form-control" name="id_usu" value="<%out.print(usuario.getId());%>">
+                      <div class="form-group">
+                        <label style="font-weight: 600">Nombre(s)</label>
+                        <input type="text" class="form-control" placeholder="Nombre(s)" name="nombres" value="<%out.print(usuario.getNombres());%>">
+                      </div>
+                      <div class="form-group">
+                        <label style="font-weight: 600">Apellido paterno</label>
+                        <input type="text" class="form-control" placeholder="Apellido paterno" name="app" value="<%out.print(usuario.getApp());%>">
+                      </div>
+                      <div class="form-group">
+                        <label style="font-weight: 600">Apellido materno</label>
+                        <input type="text" class="form-control" placeholder="Apellido materno" name="apm" value="<%out.print(usuario.getApm());%>">
+                      </div>
                     </div>
                     <div class="modal-footer">
-                      <a href="../ModificarUsuario?id=<%out.print(usuario.getId());%>" class="btn btn-primary">Eliminar</a>
+                      <button type="submit" name="guardar" id="guardar" class="btn btn-primary">Guardar</button>
                       <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                     </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+            <!-- Eliminar -->
+            <div class="modal fade" id="eliminar-<%out.print(usuario.getId());%>">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header justify-content-center" style="text-align: center">
+                    <h5 class="modal-title">¿Estás seguro que quieres eliminar?</h5>
+                  </div>
+                  <div class="modal-body">
+                    <p style="text-align: center">
+                      Se eliminará el usuario: <b> <%
+ 	out.print(usuario.getNombres() + " " + usuario.getApp() + " " + usuario.getApm());
+ %>
+                      </b>
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="../ModificarUsuario?id=<%out.print(usuario.getId());%>" class="btn btn-primary">Eliminar</a>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
                   </div>
                 </div>
               </div>
-            </td>
-          </tr>
-          <%
-          	}
-          %>
-        </tbody>
-      </table>
-    </div>
+            </div>
+          </td>
+        </tr>
+        <%
+        	}
+        %>
+      </tbody>
+    </table>
   </div>
   <%
   	String respuesta = (String) session.getAttribute("respuesta");

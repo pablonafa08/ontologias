@@ -11,7 +11,7 @@ function buscar_datos(consulta) {
       $("#subcategoria").html(respuesta);
     })
     .fail(function () {
-      alert("error");
+      alert("Error al obtener las subcategorías");
     });
 }
 

@@ -140,13 +140,14 @@
       </div>
     </div>
     <br>
+    <h4 id="noMatches" style="display: none; text-align: center; margin-top: 30px">No se encontraron coincidencias</h4>
+    <h4 id="noDataRecorded" style="display: none; text-align: center; margin-top: 30px">No se han registrado individuos</h4>
     <div id="contentTable" style="padding-bottom: 100px">
+      <%-- Los datos se muestran desde el archivo filterIndividuals.js --%>
       <div style="display: flex; justify-content: center;">
         <div class="spinner-border text-primary" style="width: 50px; height: 50px;"></div>
       </div>
     </div>
-    <h3 id="noMatches" style="display: none">No se encontraron coincidencias</h3>
-    <h3 id="noDataRecorded" style="display: none">No se han registrado individuos</h3>
   </div>
   <%
   	String respuesta = (String) session.getAttribute("respuesta");

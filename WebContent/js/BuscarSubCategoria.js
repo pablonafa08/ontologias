@@ -14,7 +14,9 @@ function buscar_datos(consulta) {
       $("#subcategorias").html(respuesta);
     })
     .fail(function () {
-      alert("error");
+      $("#subcategorias").html(
+        '<h4 style="text-align: center; margin-top: 30px">Ha ocurrido un error al cargar los datos</h4>'
+      );
     });
 }
 

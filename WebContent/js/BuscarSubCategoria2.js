@@ -12,7 +12,7 @@ function doSearch() {
   for (var i = 1; i < tableReg.rows.length; i++) {
     cellsOfRow = tableReg.rows[i].getElementsByTagName("td");
     found = false;
-    
+
     // Recorremos todas las celdas
     for (var j = 0; j < cellsOfRow.length - 2 && !found; j++) {
       compareWith = cellsOfRow[j].innerHTML.toLowerCase();

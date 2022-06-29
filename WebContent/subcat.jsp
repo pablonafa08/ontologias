@@ -107,8 +107,11 @@
       </div>
     </div>
     <br />
-    <div class="row" id="subcategorias">
-      <!--  Los datos se muestran desde el archivo buscarSubCategoria.jsp -->
+    <div id="subcategorias">
+      <!--  Los datos se muestran desde el archivo BuscarSubCategoria.js -->
+      <div style="display: flex; justify-content: center;">
+        <div class="spinner-border text-primary" style="width: 50px; height: 50px;"></div>
+      </div>
     </div>
   </div>
 </body>

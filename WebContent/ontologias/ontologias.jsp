@@ -119,55 +119,53 @@
       </div>
     </div>
     <br>
-    <div id="tabla_ontologias">
-      <h3 id="datos3" style="display: none">No se han registrado ontologías</h3>
-      <h3 id="datos2" style="display: none">No se encontraron coincidencias</h3>
-      <table class="table table-hover" id="datos">
-        <thead class="thead-default">
-          <tr style="text-align: center;">
-            <th>Id</th>
-            <th>Titulo o descripción</th>
-            <th>Subida por usuario</th>
-            <th>Abrir</th>
-          <tr>
-        </thead>
-        <tbody>
-          <%
-          	String id = request.getParameter("id").toString();
-          		request.getSession().setAttribute("id_subcategoria", id);
-          		request.getSession().setMaxInactiveInterval(60 * 30);
-          		Ontologias control = new Ontologias();
-          		ArrayList<Ontologia> ontologias = control.listarXCat(id);
-          		for (Ontologia ontologia : ontologias) {
-          %>
-          <tr>
-            <td style="text-align: center;">
-              <%
-              	out.print(ontologia.getId());
-              %>
-            </td>
-            <td style="text-align: center;">
-              <%
-              	out.print(ontologia.getTitulo());
-              %>
-            </td>
-            <td style="text-align: center;">
-              <%
-              	out.print(ontologia.getUsuario());
-              %>
-            </td>
-            <td style="text-align: center;">
-              <a href="todos.jsp?id=<%out.print(ontologia.getId());%>" class="btn btn-sm btn-primary">
-                <i class="fas fa-folder"></i>
-              </a>
-            </td>
-          </tr>
-          <%
-          	}
-          %>
-        </tbody>
-      </table>
-    </div>
+    <h4 id="datos3" style="display: none; text-align: center; margin-top: 30px">No se han registrado ontologías</h4>
+    <h4 id="datos2" style="display: none; text-align: center; margin-top: 30px">No se encontraron coincidencias</h4>
+    <table class="table table-hover" id="datos">
+      <thead class="thead-default">
+        <tr style="text-align: center;">
+          <th>Id</th>
+          <th>Titulo o descripción</th>
+          <th>Subida por usuario</th>
+          <th>Abrir</th>
+        <tr>
+      </thead>
+      <tbody>
+        <%
+        	String id = request.getParameter("id").toString();
+        		request.getSession().setAttribute("id_subcategoria", id);
+        		request.getSession().setMaxInactiveInterval(60 * 30);
+        		Ontologias control = new Ontologias();
+        		ArrayList<Ontologia> ontologias = control.listarXCat(id);
+        		for (Ontologia ontologia : ontologias) {
+        %>
+        <tr>
+          <td style="text-align: center;">
+            <%
+            	out.print(ontologia.getId());
+            %>
+          </td>
+          <td style="text-align: center;">
+            <%
+            	out.print(ontologia.getTitulo());
+            %>
+          </td>
+          <td style="text-align: center;">
+            <%
+            	out.print(ontologia.getUsuario());
+            %>
+          </td>
+          <td style="text-align: center;">
+            <a href="todos.jsp?id=<%out.print(ontologia.getId());%>" class="btn btn-sm btn-primary">
+              <i class="fas fa-folder"></i>
+            </a>
+          </td>
+        </tr>
+        <%
+        	}
+        %>
+      </tbody>
+    </table>
   </div>
 </body>
 </html>

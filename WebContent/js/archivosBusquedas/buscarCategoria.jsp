@@ -12,12 +12,16 @@
 	} else {
 		categorias = conexion.listarXFiltro(request.getParameter("consulta"));
 	}
-	if (categorias.size() == 0) {
-		salida = "<h3>No se encontraron coincidencias</h3>";
+	if (categorias.size() == 0 && request.getParameter("consulta") != null) {
+		salida = "<h4 style=\"text-align: center; margin-top: 30px\">No se encontraron coincidencias</h4>";
+	} else if (categorias.size() == 0 && request.getParameter("consulta") == null) {
+		salida = "<h4 style=\"text-align: center; margin-top: 30px\">No hay categorias registradas</h4>";
+	} else {
+		salida = "<div class=\"row\">";
 	}
+
 	for (Categoria categoria : categorias) {
 		if (categoria.getImagen() != null) {
-
 			salida += "<div style=\"margin-right: 8%; margin-bottom: 3%;\" class=\"col-2 \">";
 			salida += "<a href=\"subcat.jsp?id=" + categoria.getId()
 					+ "\" style=\"color:inherit; hover:'text-decoration: none;'\">";
@@ -33,7 +37,6 @@
 			salida += "</div>";
 
 		} else {
-
 			salida += "<div style=\"margin-right: 8%; margin-bottom: 3%;\" class=\"col-2 \">";
 			salida += "<a href=\"subcat.jsp?id=" + categoria.getId()
 					+ "\" style=\"color:inherit; hover:'text-decoration: none;'\">";
@@ -47,6 +50,10 @@
 			salida += "</div>";
 
 		}
+	}
+
+	if (categorias.size() > 0) {
+		salida += "</div>";
 	}
 	out.print(salida);
 %>

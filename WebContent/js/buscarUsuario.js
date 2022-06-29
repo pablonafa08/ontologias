@@ -45,34 +45,3 @@ function doSearch() {
     document.getElementById("datos3").style.display = "none";
   }
 }
-
-/*'use strict'
-$(buscar_datos());
-
-function buscar_datos(consulta){
-    $.ajax({
-       url: '../js/archivosBusquedas/buscarUsuario.jsp',
-       type: 'POST',
-       dataType: 'html',
-       data: {consulta:consulta}
-    })
-    .done(function(respuesta){
-        $("#tabla_usuarios").html(respuesta);
-        console.log($("#tabla_usuarios").html(respuesta));
-        //alert($("#resultado").html(respuesta));
-    })
-    .fail(function(){
-        console.log("error");
-        alert("error");
-    })
-    ;
-}
-
-$(document).on('keyup','#buscar',function(){
-   var valor = $(this).val();
-   if(valor != ""){
-       buscar_datos(valor);
-   }else{
-       buscar_datos();
-   }
-});*/

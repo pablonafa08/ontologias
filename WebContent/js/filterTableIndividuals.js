@@ -171,7 +171,8 @@ function loadTable() {
         });
 
         if (!res.data.length) {
-          const noData = "<h3>No se han registrado individuos</h3>";
+          const noData =
+            '<h4 style="text-align: center; margin-top: 30px">No se han registrado individuos</h4>';
           $("#contentTable").html(noData);
         } else {
           $("#contentTable").html(
@@ -180,12 +181,13 @@ function loadTable() {
         }
       } catch (error) {
         const messageError =
-          "<h3>Ha ocurrido un error al cargar los datos</h3>";
+          '<h4 style="text-align: center; margin-top: 30px">Ha ocurrido un error al cargar los datos</h4>';
         $("#contentTable").html(messageError);
       }
     })
     .fail(function () {
-      const messageError = "<h3>Ha ocurrido un error al cargar los datos</h3>";
+      const messageError =
+        '<h4 style="text-align: center; margin-top: 30px">Ha ocurrido un error al cargar los datos</h4>';
       $("#contentTable").html(messageError);
     });
 }

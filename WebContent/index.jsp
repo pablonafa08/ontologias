@@ -109,8 +109,11 @@
       </div>
     </div>
     <br>
-    <div class="row" id="categorias">
-      <!--  Los datos se muestran desde el archivo buscarCategorias.jsp -->
+    <div id="categorias">
+      <!--  Los datos se muestran desde el archivo buscarCategoria.js -->
+      <div style="display: flex; justify-content: center;">
+        <div class="spinner-border text-primary" style="width: 50px; height: 50px;"></div>
+      </div>
     </div>
   </div>
 </body>

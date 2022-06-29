@@ -28,7 +28,7 @@
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-<script src="js/buscarCategoria.js"></script>
+<script src="js/filterNotifications.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet">
 </head>
@@ -104,7 +104,22 @@
 
     <div class="tab-content" id="nav-tabContent" style="margin-top: 16px">
       <div class="tab-pane fade" id="nav-delete" role="tabpanel" aria-labelledby="nav-delete-tab">
-        <table class="table table-hover" id="datos">
+        <div class="row justify-content-end align-items-center">
+          <div class="col-4">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text" id="btnGroupAddon">
+                  <i class="fas fa-search"></i>
+                </div>
+              </div>
+              <input type="text" class="form-control" placeholder="Buscar" id="searchTermDelete" onkeyup="doSearchDeleteRequest();" aria-label="Buscar" aria-describedby="btnGroupAddon">
+            </div>
+          </div>
+        </div>
+        <br>
+        <h4 id="datosDelete3" style="display: none; text-align: center; margin-top: 30px">No se han hecho peticiones de eliminación</h4>
+        <h4 id="datosDelete2" style="display: none; text-align: center; margin-top: 30px">No se encontraron coincidencias</h4>
+        <table class="table table-hover" id="datosDelete">
           <thead class="thead-default">
             <tr style="text-align: center;">
               <th>Id</th>
@@ -213,7 +228,22 @@
       </div>
 
       <div class="tab-pane fade show active" id="nav-edit" role="tabpanel" aria-labelledby="nav-edit-tab">
-        <table class="table table-hover" id="datos2">
+        <div class="row justify-content-end align-items-center">
+          <div class="col-4">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="input-group-text" id="btnGroupAddon">
+                  <i class="fas fa-search"></i>
+                </div>
+              </div>
+              <input type="text" class="form-control" placeholder="Buscar" id="searchTermEdit" onkeyup="doSearchEditRequest();" aria-label="Buscar" aria-describedby="btnGroupAddon">
+            </div>
+          </div>
+        </div>
+        <br>
+        <h4 id="datosEdit3" style="display: none; text-align: center; margin-top: 30px">No se han hecho peticiones de modificación</h4>
+        <h4 id="datosEdit2" style="display: none; text-align: center; margin-top: 30px">No se encontraron coincidencias</h4>
+        <table class="table table-hover" id="datosEdit">
           <thead class="thead-default">
             <tr style="text-align: center;">
               <th>Id</th>
