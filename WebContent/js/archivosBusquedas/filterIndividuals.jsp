@@ -53,7 +53,7 @@
 	}
 
 	request.getSession().setAttribute("ruta", nombre);
-	request.getSession().setMaxInactiveInterval(60 * 30);
+	request.getSession().setMaxInactiveInterval(60 * 60);
 
 	// ------ Se obtienen todos los datos y metadatos que contiene la ontología ------
 	ClasesLectura clases = new ClasesLectura();

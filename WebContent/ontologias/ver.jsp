@@ -4,14 +4,10 @@
 	if (usuario2 == null) {
 		response.sendRedirect("/ontologias/login.jsp");
 	} else {
+		request.getSession().setMaxInactiveInterval(60 * 60);
 %>
 <%@page import="controllers.ClasesLectura"%>
-<%@page import="java.sql.*"%>
-<%@page import="controllers.Conexion"%>
-<%@page import="controllers.Usuarios"%>
-<%@page import="models.Usuario"%>
 <%@page import="models.Utils"%>
-<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -27,69 +23,19 @@
 <script src="../js/bootstrap4.min.js"></script>
 <script src="../js/fontsolid.js"></script>
 <script src="../js/fontawesome.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="../js/navbar.js"></script>
+<script>
+	loadNavBar({
+		src : '../'
+	});
+</script>
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
-    <img src="../img/uasLogo.png" class="logo" alt="Logo" style="height: 50px; width: 50px;">
-    <a class="navbar-brand" href="../index.jsp">Ontologías</a>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-      </ul>
-      <form class="form-inline my-2 my-lg-0">
-        <%
-        	if (request.getSession().getAttribute("UsuarioTipo").toString().equals("1")) {
-        %>
-        <a class="navbar-brand" href="../categorias/categorias.jsp">Categorías</a>
-        <a class="navbar-brand" href="../categorias/ramas.jsp">Subcategorías</a>
-        <a class="navbar-brand" href="../ontologias/todas.jsp">Ontologías</a>
-        <a class="navbar-brand" href="../usuarios/usuarios.jsp">
-          <i class="fas fa-users"></i>
-        </a>
-        <%
-        	}
-        %>
-        <a class="navbar-brand" href="../ontologias/propias.jsp">Mis Ontologías</a>
-        <a class="navbar-brand" href="../noti.jsp">
-          <i class="fas fa-bell"></i>
-        </a>
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item dropdown">
-            <a style="color: white;" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%
-              	Conexion cn2 = new Conexion();
-              		Connection conn2 = cn2.GetConexion();
-              		Statement state4 = conn2.createStatement();
-              		Usuarios conexion2 = new Usuarios();
-              		ArrayList<Usuario> usuarios2 = conexion2
-              				.buscarXId(request.getSession().getAttribute("UsuarioId").toString());
-              		for (Usuario usuario : usuarios2) {
-              %>
-              <%
-              	if (usuario.getFoto() != null) {
-              %>
-              <img src="data: image/png;base64,<%out.print(usuario.getFoto());%>" style="width: 2rem; height: 2rem; object-fit: cover;">
-              <%
-              	} else {
-              %>
-              <img src="../img/face2.png" style="width: 2rem; height: 2rem; object-fit: cover;">
-              <%
-              	}
-              %>
-              <%
-              	}
-              %>
-            </a>
-            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" href="../perfil.jsp">Ver Perfil</a>
-              <a class="dropdown-item" href="../cambiar.jsp">Cambiar Contraseña</a>
-              <a class="dropdown-item" href="../salir.jsp">Cerrar sesión</a>
-            </div>
-          </li>
-        </ul>
-      </form>
-    </div>
-  </nav>
+  <nav id="navBarContent" class="navbar navbar-expand-lg navbar-dark bg-primary" style="justify-content: flex-start; min-height: 66px"></nav>
+
   <br>
   <div class="container">
     <div class="row">

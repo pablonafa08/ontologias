@@ -26,7 +26,7 @@ public class MostrarCampos extends HttpServlet {
 			throws ServletException, IOException {
 		try {
 			request.getSession().setAttribute("clase_e", request.getParameter("clase"));
-			request.getSession().setMaxInactiveInterval(60 * 30);
+			request.getSession().setMaxInactiveInterval(60 * 60);
 			response.sendRedirect("/ontologias/ontologias/insertar.jsp");
 		} catch (Exception e) {
 		}

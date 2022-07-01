@@ -78,3 +78,7 @@ h3,
 table {
   color: #343a40 !important;
 }
+
+.navbar-margin {
+  margin-right: 1.5rem !important;
+}

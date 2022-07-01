@@ -13,7 +13,7 @@
 				request.getSession().setAttribute("UsuarioTipo", Integer.toString(usuario.getTipo()));
 				request.getSession().setAttribute("UsuarioCategoria", usuario.getCategoria());
 				request.getSession().setAttribute("Usuario", "1");
-				request.getSession().setMaxInactiveInterval(60 * 30);
+				request.getSession().setMaxInactiveInterval(60 * 60);
 				response.sendRedirect("/ontologias/index.jsp");
 			} else {
 				request.setAttribute("noentro", "no");
